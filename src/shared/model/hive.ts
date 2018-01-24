@@ -12,6 +12,9 @@ export interface Hive {
     name: string;
     description: string;
 
+    created: number;
+    lastChanged:number;
+
     /** access control list */
     owner: string;
     read: string[];
@@ -25,6 +28,8 @@ export interface Hive {
 
     currentVarroaLevelGramms: number;
     currentVarroaLevelDays: number;
+
+    currentWeight: number;
 
     position: {
         lan: number;

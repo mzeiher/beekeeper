@@ -3,42 +3,55 @@ export interface ActivityMap {
         meekness: number;
         health: number;
         notes: string;
-    }
+    };
     "harvest" : {
         honeyInKg: number;
-    },
+    };
     "varroa-control-powder" : {
         beeMassInGramms: number;
         numberVarroa: number;
-    },
+    };
     "varroa-control-added-slider": null;
     "varroa-control-checked-slider" : {
         days: number;
         numberOfVarroa: number;
-    },
+    };
     "added-frame" : string;
     "removed-frame" : string;
     "reordered-frame" : {
         oldOrder: string[];
         newOrder: string[];
-    },
+    };
     "added-queen" : {
         fromHive: string;
-    },
+    };
     "cutout-drones" : {
         affectedFrames: string[];
-    },
+    };
     "varroa-treatment-general" : {
         remedy: string;
         appliance: string;
         quantityInMl: string;
-    },
+    };
     "varroa-treatmend-vaporizer-start" : {
         quantityInMl: number;
         wickSize: "small" | "medium" | "large";
-    }
+    };
     "varroa-treatmend-vaporizer-end" : {
 
+    };
+    "added-feeder" : {
+        feederId: string;
+    };
+    "removed-feeder" : {
+        feederId: string;
+    };
+    "added-food" : {
+        type: string;
+        quantity: number;
+    };
+    "weighting" : {
+        weight: number;
     }
 }
 
