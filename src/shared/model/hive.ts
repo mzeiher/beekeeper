@@ -17,8 +17,8 @@ export interface Hive {
 
     /** access control list */
     owner: string;
-    read: string[];
-    edit: string[];
+    admin: string[];
+    user: string[];
 
     /** reference to image */
     image: string;
