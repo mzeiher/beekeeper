@@ -11,6 +11,10 @@ export class HiveService {
     return Promise.reject('not implemented');
   }
 
+  public createHive(hive:Hive): Promise<Hive> {
+    return Promise.reject('not implemented');
+  }
+
   public getHive(id: string): Promise<Hive> {
     return Promise.reject('not implemented');
   }
