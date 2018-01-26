@@ -1,16 +1,16 @@
 export interface FrameHistoryEntryMap {
-    "create" : string;
-    "move-frame" : {
+    "create": string;
+    "move-frame": {
         fromHiveId: string;
         fromSuperId: string;
         toHiveId: string;
         toSuperId: string;
     };
-    "remove-frame" : {
+    "remove-frame": {
         fromHiveId: string;
         fromSuperId: string;
     };
-    "add-frame" : {
+    "add-frame": {
         toHiveId: string;
         toSuperId: string;
     }
@@ -24,7 +24,7 @@ export interface FrameHistoryEntry<K extends keyof FrameHistoryEntryMap> {
 }
 
 export interface Frame {
-    id : string;
+    id: string;
 
     type: "brood" | "honey" | "drone";
 

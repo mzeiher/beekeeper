@@ -13,7 +13,7 @@ export interface Hive {
     description: string;
 
     created: number;
-    lastChanged:number;
+    lastChanged: number;
 
     /** access control list */
     owner: string;
@@ -40,20 +40,20 @@ export interface Hive {
     /**
      * current frames
      */
-    hiveSupers : HiveSuper[]; // zargen
+    hiveSupers: HiveSuper[]; // zargen
     history: HiveHistoryEntry<keyof HiveHistoryEntryMap>[];
     activity: Activity<keyof ActivityMap>[];
 }
 
 export interface HiveSuper {
-    id:string;
+    id: string;
 
     type: string;
     frames: Frame[];
 }
 
 export interface HiveHistoryEntryMap {
-    "create" : null;
+    "create": null;
     "change-name": string;
     "add-group": string;
     "remove-group": string;

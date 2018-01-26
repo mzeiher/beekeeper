@@ -21,7 +21,7 @@ export interface Collection {
     name: string;
 
     description: string;
-    
+
     owner: string;
     read: string[];
     write: string[];
