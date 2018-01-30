@@ -8,16 +8,21 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router/src/config';
 import { HivelistComponent } from './hive/components/hivelist/hivelist.component';
 import { HiveComponent } from './hive/components/hive/hive.component';
-import { AppRouting } from './app-routing.module';
+
+const appRoutes: Routes = [
+    { path: 'hive/:id', component: HiveComponent },
+    { path: '**', component: HivelistComponent }
+];
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
     imports: [
-        BrowserModule, AppRouting, HiveModule
+        RouterModule.forRoot(
+            appRoutes,
+            { enableTracing: true } // <-- debugging purposes only
+        ), HiveModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    exports: [
+        RouterModule
+    ]
 })
-export class AppModule { }
+export class AppRouting { }

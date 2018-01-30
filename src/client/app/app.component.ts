@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HiveModule } from './hive/hive.module';
 
 @Component({
   selector: 'app-root',

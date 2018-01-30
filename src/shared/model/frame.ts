@@ -28,9 +28,11 @@ export interface Frame {
 
     type: "brood" | "honey" | "drone";
 
-    foodPercent: number;
+    honeyPercent: number;
+    pollenPercent: number;
     broodPercent: number;
     dronePercent: number;
+    buildPercent: number;
 
     history: FrameHistoryEntry<keyof FrameHistoryEntryMap>[];
 }

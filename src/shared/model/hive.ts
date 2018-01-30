@@ -1,6 +1,7 @@
 import { Frame } from "./frame";
 import { Activity, ActivityMap } from "./activity";
 
+export type HiveType = "DADANT" | "DADANT_US" | "LANGSTROTH" | "ZANDER" 
 /**
  * Hive representation (Aggregate)
  */
@@ -11,6 +12,7 @@ export interface Hive {
 
     name: string;
     description: string;
+    type: HiveType;
 
     created: number;
     lastChanged: number;
@@ -37,6 +39,11 @@ export interface Hive {
         orientation: number;
     }
 
+    dimensions: {
+        width: number;
+        depth: number;
+    }
+
     /**
      * current frames
      */
@@ -45,10 +52,15 @@ export interface Hive {
     activity: Activity<keyof ActivityMap>[];
 }
 
+export type HiveSuperType = "ROOF" | "BROOD_SUPER" | "HONEY_SUPER" | "FEEDER" | "COVER" | "QUEEN_EXCLUDER" | "HIGH_BOTTOM_BOARD" | "LOW_BOTTOM_BOARD" | "BIENENFLUCHT"
+
 export interface HiveSuper {
     id: string;
 
-    type: string;
+    type: HiveSuperType;
+    subtype: string;
+
+    maxFrameCount: number;
     frames: Frame[];
 }
 
