@@ -16,21 +16,17 @@ import { ElementRef } from '@angular/core';
 export class HiveComponent implements OnInit {
 
     @Input() hive: Hive;
-    @ViewChild('hiveinfo') hiveInfo: ElementRef
-
+    @Input() currentCollection: string = null;
+    
     constructor(private router: Router, private hiveService: HiveService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        let hive = this.hiveService.currentHive;
-        if (hive && (hive.id !== this.activatedRoute.snapshot.paramMap.get('id'))) {
-            this.hiveService.getHive(this.activatedRoute.snapshot.paramMap.get('id')).then((hive) => {
-                this.hive = hive;
-                this.hiveInfo.nativeElement.value = JSON.stringify(this.hive);
-            });
-        } else {
+        this.currentCollection = this.activatedRoute.snapshot.paramMap.get('collectionId');
+        this.hiveService.getHive(this.activatedRoute.snapshot.paramMap.get('hiveId')).then((hive) => {
             this.hive = hive;
-            this.hiveInfo.nativeElement.value = JSON.stringify(this.hive);
-        }
+        }).catch(() => {
+            this.hive = null;
+        });
     }
-
 }
+

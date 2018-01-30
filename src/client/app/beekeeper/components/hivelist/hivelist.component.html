@@ -1,11 +1,17 @@
-<div *ngIf="hiveList.length > 0">
-    <ul>
-        <li *ngFor="let hive of hiveList" (click)="navigateTo(hive)">
-            {{ hive.name }}
-        </li>
-    </ul>
+<div *ngIf="!hiveList">
+    COLLECTION NOT FOUND
 </div>
-<div *ngIf="hiveList.length === 0">
-    No Hives
+<div *ngIf="hiveList">
+
+    <div *ngIf="hiveList.length > 0">
+        <ul>
+            <li *ngFor="let hive of hiveList" (click)="navigateTo(hive)">
+                {{ hive.name }}
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="hiveList.length === 0">
+        No Hives
+    </div>
+    <button (click)="addHive()">Add Hive</button>
 </div>
-<button (click)="addHive()">Add Hive</button>

@@ -11,8 +11,9 @@ import { HiveComponent } from './beekeeper/components/hive/hive.component';
 import { CollectionsComponent } from './beekeeper/components/collections/collections.component';
 const appRoutes: Routes = [
     { path: 'collections', component: CollectionsComponent},
-    { path: 'collection/:id', component: HivelistComponent},
-    { path: 'hive/:id', component: HiveComponent },
+    { path: 'collection/:collectionId', component: HivelistComponent},
+    { path: 'hive/:hiveId', component: HiveComponent },
+    { path: 'collection/:collectionId/hive/:hiveId', component: HiveComponent },
     { path: '**', component: CollectionsComponent }
 ];
 

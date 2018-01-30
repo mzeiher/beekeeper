@@ -6,7 +6,7 @@ interface DataBase {
     "templates": Hive[];
 }
 
-export const dataBase: DataBase = {
+export const hiveDataBase: DataBase = {
     "hives": [
 
     ],
@@ -69,3 +69,9 @@ export const dataBase: DataBase = {
         }
     ]
 }
+
+try {
+    Object.assign(hiveDataBase, JSON.parse(window.localStorage.getItem('hiveDataBase')));
+} catch(e) {}
+
+window['hiveDataBase'] = hiveDataBase;

@@ -3,18 +3,15 @@ import { Injectable } from '@angular/core';
 import { Hive } from "../../../../shared/model/hive";
 import { Collection } from '../../../../shared/model/collection';
 
-import { dataBase } from "./hivedb.test";
+import { hiveDataBase } from "./hivedb.test";
 
 @Injectable()
 export class HiveService {
 
     constructor() { }
 
-    public currentHive: Hive;
-    public currentCollection: Collection;
-
     public getAllHives(): Promise<Hive[]> {
-        return Promise.resolve(dataBase.hives);
+        return Promise.resolve(hiveDataBase.hives);
     }
 
     public getAllHivesForCollection(collection: Collection): Promise<Hive[]> {
@@ -23,7 +20,21 @@ export class HiveService {
         }));
     }
 
-    public addHive(hive: Hive): Promise<Hive> {
+    public getAllHivesNotInCollection(collection: Collection): Promise<Hive[]> {
+        return this.getAllHives().then((hiveList) => {
+            const hives: Hive[] = [];
+            hiveList.reduce((prevValue, currentValue) => {
+                if(collection.hives.indexOf(currentValue.id) < 0) {
+                    prevValue.push(currentValue);
+                }
+                return prevValue;
+            }, hives);
+            return Promise.resolve(hives);
+        })
+    }
+
+    public addHive(newHive: Hive): Promise<Hive> {
+        const hive = <Hive>JSON.parse(JSON.stringify(newHive));
         hive.id = Math.random().toString();
         hive.hiveSupers.forEach((hiveSuper) => {
             if (!hiveSuper.id) {
@@ -35,13 +46,14 @@ export class HiveService {
                 }
             });
         });
-        dataBase.hives.push(hive);
+        hiveDataBase.hives.push(hive);
+        window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
         return Promise.resolve(hive);
     }
 
     public getHive(id: string): Promise<Hive> {
         let hive: Hive = null;
-        for (const hiveEntry of dataBase.hives) {
+        for (const hiveEntry of hiveDataBase.hives) {
             if (hiveEntry.id === id) {
                 hive = hiveEntry;
                 break;
@@ -54,10 +66,12 @@ export class HiveService {
     }
 
     public updateHive(hive: Hive): Promise<Hive> {
+        window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
         return Promise.reject('not implemented');
     }
 
     public deleteHive(hive: Hive): Promise<boolean> {
+        window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
         return Promise.reject('not implemented');
     }
 
@@ -73,17 +87,18 @@ export class HiveService {
                 frame.history = [];
             });
         });
-        dataBase.templates.push(hive);
+        hiveDataBase.templates.push(hive);
+        window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
         return Promise.resolve(true);
     }
 
     public getTemplates(): Promise<string[]> {
-        return Promise.resolve(dataBase.templates.map((value) => {
+        return Promise.resolve(hiveDataBase.templates.map((value) => {
             return value.name
         }));
     }
 
     public getTemplate(id: string): Promise<Hive> {
-        return Promise.resolve(dataBase.templates[0]);
+        return Promise.resolve(hiveDataBase.templates[0]);
     }
 }

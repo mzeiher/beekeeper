@@ -1,3 +1,9 @@
+<ul><li *ngIf="currentCollection">{{currentCollection}}</li><li *ngIf="hive">{{hive.id}}</li></ul>
+<div *ngIf="hive">
 <div>{{hive.id}}</div>
 <div>{{hive.name}}</div>
-<textarea #hiveinfo></textarea>
+<textarea>{{hive}}</textarea>
+</div>
+<div *ngIf="!hive">
+    No Hive defined
+</div>
