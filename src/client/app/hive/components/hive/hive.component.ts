@@ -9,7 +9,7 @@ import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
 @Component({
-    selector: 'app-hive',
+    selector: 'beekeeper-hive',
     templateUrl: './hive.component.html',
     styleUrls: ['./hive.component.css']
 })

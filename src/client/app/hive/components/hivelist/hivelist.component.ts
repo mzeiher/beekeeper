@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@angular/core';
 
 @Component({
-    selector: 'app-hivelist',
+    selector: 'beekeeper-hivelist',
     templateUrl: './hivelist.component.html',
     styleUrls: ['./hivelist.component.css']
 })

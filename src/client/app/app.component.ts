@@ -7,5 +7,4 @@ import { HiveModule } from './hive/hive.module';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
 }

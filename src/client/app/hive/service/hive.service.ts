@@ -12,7 +12,7 @@ export class HiveService {
 
     public currentHive: Hive;
     public currentCollection: Collection;
-    
+
     public getAllHives(): Promise<Hive[]> {
         return Promise.resolve(dataBase.hives);
     }
@@ -71,6 +71,28 @@ export class HiveService {
 
     public deleteHive(hive: Hive): Promise<boolean> {
         return Promise.reject('not implemented');
+    }
+
+    public addTemplate(hive:Hive):Promise<boolean> {
+        const clone = <Hive>JSON.parse(JSON.stringify(hive));
+        clone.activity = [];
+        clone.history = [];
+        clone.id = '';
+        clone.hiveSupers.forEach((hiveSuper) => {
+            hiveSuper.id = '';
+            hiveSuper.frames.forEach((frame)=> {
+                frame.id = ''
+                frame.history = [];
+            });
+        });
+        dataBase.templates.push(hive);
+        return Promise.resolve(true);
+    }
+
+    public getTemplates():Promise<string[]> {
+        return Promise.resolve(dataBase.templates.map((value) => {
+            return value.name
+        }));
     }
 
     public getTemplate(id:string): Promise<Hive> {
