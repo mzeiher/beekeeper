@@ -3,19 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { HiveModule } from './hive/hive.module';
+import { HiveModule } from './beekeeper/beekeeper.module';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router/src/config';
-import { HivelistComponent } from './hive/components/hivelist/hivelist.component';
-import { HiveComponent } from './hive/components/hive/hive.component';
-import { CollectionsComponent } from './collection/components/collections/collections.component';
-import { CollectionComponent } from './collection/components/collection/collection.component';
-
+import { HivelistComponent } from './beekeeper/components/hivelist/hivelist.component';
+import { HiveComponent } from './beekeeper/components/hive/hive.component';
+import { CollectionsComponent } from './beekeeper/components/collections/collections.component';
 const appRoutes: Routes = [
     { path: 'collections', component: CollectionsComponent},
-    { path: 'collections/:id', component: CollectionComponent},
+    { path: 'collection/:id', component: HivelistComponent},
     { path: 'hive/:id', component: HiveComponent },
-    { path: '**', component: HivelistComponent }
+    { path: '**', component: CollectionsComponent }
 ];
 
 @NgModule({

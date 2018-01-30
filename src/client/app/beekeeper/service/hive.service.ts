@@ -17,32 +17,20 @@ export class HiveService {
         return Promise.resolve(dataBase.hives);
     }
 
-    public getAllHivesForCollection(id: string): Promise<Hive[]> {
-        let collection: Collection = null;
-        for (let collectionEntry of dataBase.collections) {
-            if (collectionEntry.id === id) {
-                collection = collectionEntry;
-                break;
-            }
-        }
-        if (collection !== null) {
-            return Promise.all<Hive>(collection.hives.map((value) => {
-                return this.getHive(value);
-            }));
-        } else {
-            return Promise.reject('no collection found');
-        }
-
+    public getAllHivesForCollection(collection: Collection): Promise<Hive[]> {
+        return Promise.all<Hive>(collection.hives.map((value) => {
+            return this.getHive(value);
+        }));
     }
 
     public addHive(hive: Hive): Promise<Hive> {
         hive.id = Math.random().toString();
         hive.hiveSupers.forEach((hiveSuper) => {
-            if(!hiveSuper.id) {
+            if (!hiveSuper.id) {
                 hiveSuper.id = Math.random().toString();
             }
             hiveSuper.frames.forEach((frame) => {
-                if(!frame.id) {
+                if (!frame.id) {
                     frame.id = Math.random().toString();
                 }
             });
@@ -52,14 +40,14 @@ export class HiveService {
     }
 
     public getHive(id: string): Promise<Hive> {
-        let hive:Hive = null;
-        for(const hiveEntry of dataBase.hives) {
-            if(hiveEntry.id === id) {
+        let hive: Hive = null;
+        for (const hiveEntry of dataBase.hives) {
+            if (hiveEntry.id === id) {
                 hive = hiveEntry;
                 break;
             }
         }
-        if(hive) {
+        if (hive) {
             return Promise.resolve(hive);
         }
         return Promise.reject('not implemented');
@@ -73,14 +61,14 @@ export class HiveService {
         return Promise.reject('not implemented');
     }
 
-    public addTemplate(hive:Hive):Promise<boolean> {
+    public addTemplate(hive: Hive): Promise<boolean> {
         const clone = <Hive>JSON.parse(JSON.stringify(hive));
         clone.activity = [];
         clone.history = [];
         clone.id = '';
         clone.hiveSupers.forEach((hiveSuper) => {
             hiveSuper.id = '';
-            hiveSuper.frames.forEach((frame)=> {
+            hiveSuper.frames.forEach((frame) => {
                 frame.id = ''
                 frame.history = [];
             });
@@ -89,13 +77,13 @@ export class HiveService {
         return Promise.resolve(true);
     }
 
-    public getTemplates():Promise<string[]> {
+    public getTemplates(): Promise<string[]> {
         return Promise.resolve(dataBase.templates.map((value) => {
             return value.name
         }));
     }
 
-    public getTemplate(id:string): Promise<Hive> {
+    public getTemplate(id: string): Promise<Hive> {
         return Promise.resolve(dataBase.templates[0]);
     }
 }

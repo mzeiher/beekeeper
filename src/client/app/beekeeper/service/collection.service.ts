@@ -20,4 +20,10 @@ export class CollectionService {
     public removeCollection(collection:Collection): Promise<boolean> {
         return Promise.reject('not yet implmeneted');
     }
+
+    public getCollection(id:string): Promise<Collection> {
+        return Promise.reject('not yet implmeneted');
+    }
+
+
 }

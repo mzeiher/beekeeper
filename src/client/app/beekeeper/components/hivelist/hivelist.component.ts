@@ -3,6 +3,8 @@ import { HiveService } from '../../service/hive.service';
 import { Hive } from '../../../../../shared/model/hive';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@angular/core';
+import { CollectionService } from '../../service/collection.service';
+import { Collection } from '../../../../../shared/model/collection';
 
 @Component({
     selector: 'beekeeper-hivelist',
@@ -11,19 +13,27 @@ import { Input } from '@angular/core';
 })
 export class HivelistComponent implements OnInit {
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private hiveService: HiveService) { }
+    constructor(private router: Router, 
+        private activatedRoute: ActivatedRoute, 
+        private hiveService: HiveService, 
+        private collectionService:CollectionService) { }
 
     @Input() hiveList: Hive[];
 
-    private currentCollections: string;
+    private currentCollections: Collection;
 
     ngOnInit() {
         if (this.activatedRoute.snapshot.paramMap.get('collection')) {
-            this.currentCollections = this.activatedRoute.snapshot.paramMap.get('collection');
+            this.collectionService.getCollection(this.activatedRoute.snapshot.paramMap.get('collection')).then(
+                (collection) => {
+                    this.currentCollections = collection;
+                    this.reloadList();
+                }
+            );
         } else {
             this.currentCollections = null;
+            this.reloadList();
         }
-        this.reloadList();
     }
 
     public addHive() {

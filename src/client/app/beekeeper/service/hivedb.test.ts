@@ -2,15 +2,11 @@ import { Collection } from "../../../../shared/model/collection";
 import { Hive } from "../../../../shared/model/hive";
 
 interface DataBase {
-    "collections": Collection[];
     "hives": Hive[];
     "templates": Hive[];
 }
 
 export const dataBase: DataBase = {
-    "collections": [
-
-    ],
     "hives": [
 
     ],
