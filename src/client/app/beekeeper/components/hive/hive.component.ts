@@ -1,32 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 
 import { HiveService } from '../../service/hive.service';
-import { Input } from '@angular/core';
+import { CollectionService } from '../../service/collection.service';
 import { Hive } from '../../../../../shared/model/hive';
-import { ViewChild } from '@angular/core';
-import { ElementRef } from '@angular/core';
+import { Collection } from '../../../../../shared/model/collection';
 
 @Component({
     selector: 'beekeeper-hive',
     templateUrl: './hive.component.html',
-    styleUrls: ['./hive.component.css']
+    styleUrls: ['./hive.component.css'],
+    providers: [HiveService, CollectionService]
 })
 export class HiveComponent implements OnInit {
 
     @Input() hive: Hive;
-    @Input() currentCollection: string = null;
-    
-    constructor(private router: Router, private hiveService: HiveService, private activatedRoute: ActivatedRoute) { }
+    @Input() currentCollection: Collection = null;
+
+    constructor(private router: Router, private hiveService: HiveService, private collectionService: CollectionService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        this.currentCollection = this.activatedRoute.snapshot.paramMap.get('collectionId');
-        this.hiveService.getHive(this.activatedRoute.snapshot.paramMap.get('hiveId')).then((hive) => {
+        const collectionId = this.activatedRoute.snapshot.paramMap.get('collectionId');
+        const hiveId = this.activatedRoute.snapshot.paramMap.get('hiveId');
+        if (collectionId && collectionId !== 'all' && collectionId !== 'uncollected') {
+            this.collectionService.getAllCollections().then((collections) => {
+                for (let collection of collections) {
+                    if (collection.id === collectionId) {
+                        this.currentCollection = collection;
+                        break;
+                    }
+                }
+                if (this.currentCollection === null) {
+                    this.currentCollection = this.collectionService.getAllCollection();
+                    //this.router.navigate(['/collections', 'uncollected', 'hive', hiveId], {skipLocationChange: true});
+                }
+            });
+        } else {
+            if(collectionId === null || collectionId === 'all') {
+                this.currentCollection = this.collectionService.getAllCollection();
+            } else if(collectionId === 'uncollected') {
+                this.currentCollection = this.collectionService.getUncollectedCollection();
+            }
+        }
+        this.hiveService.getHive(hiveId).then((hive) => {
             this.hive = hive;
         }).catch(() => {
             this.hive = null;
         });
+
     }
 }
-

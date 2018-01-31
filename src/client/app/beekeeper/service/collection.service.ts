@@ -10,9 +10,35 @@ export class CollectionService {
         return Promise.resolve(collectionDataBase.collections);
     }
 
+    public getAllCollection(): Collection {
+        return {
+            id: 'all',
+            description: '',
+            history: [],
+            hives: [],
+            name: 'all',
+            owner: '',
+            read: [],
+            write: []
+        }
+    }
+
+    public getUncollectedCollection(): Collection {
+        return {
+            id: 'uncollected',
+            description: '',
+            history: [],
+            hives: [],
+            name: 'uncollected',
+            owner: '',
+            read: [],
+            write: []
+        }
+    }
+
     public addCollection(collection: Collection): Promise<Collection> {
         const clone = <Collection>JSON.parse(JSON.stringify(collection));
-        clone.id = Math.random().toString();
+        clone.id = new Date().getTime().toString();
         collectionDataBase.collections.push(clone);
         window.localStorage.setItem('collectionDataBase', JSON.stringify(collectionDataBase));
         return Promise.resolve(clone);

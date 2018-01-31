@@ -20,22 +20,12 @@ export class HivelistComponent implements OnInit {
         private collectionService: CollectionService) { }
 
     @Input() hiveList: Hive[] = [];
-
-    private currentCollection: Collection;
+    @Input() currentCollection: Collection;
 
     ngOnInit() {
         const collectionId = this.activatedRoute.snapshot.paramMap.get('collectionId');
         if (collectionId === 'uncollected') {
-            this.currentCollection = {
-                id: 'uncollected',
-                description: '',
-                history: [],
-                hives: [],
-                name: 'uncollected',
-                owner: '',
-                read: [],
-                write: []
-            };
+            this.currentCollection = this.collectionService.getUncollectedCollection();
             this.collectionService.getAllCollections().then((collections) => {
                 const hiveIds = collections.reduce((prevValue, currentValue) => {
                     return currentValue.hives.concat(prevValue);
@@ -46,16 +36,7 @@ export class HivelistComponent implements OnInit {
                 this.reloadList();
             });
         } else if (collectionId === 'all') {
-            this.currentCollection = {
-                id: 'all',
-                description: '',
-                history: [],
-                hives: [],
-                name: 'all',
-                owner: '',
-                read: [],
-                write: []
-            };
+            this.currentCollection = this.collectionService.getAllCollection();
             this.reloadList();
         } else if (typeof collectionId === 'string') {
             this.collectionService.getCollection(collectionId).then(
@@ -74,6 +55,9 @@ export class HivelistComponent implements OnInit {
 
     public addHive() {
         this.hiveService.getTemplate("").then((hive) => {
+            if(this.currentCollection && this.currentCollection.id !== 'all' && this.currentCollection.id !== 'uncollected') {
+                hive.collections.push(this.currentCollection.id);
+            }
             return this.hiveService.addHive(hive);
         }).then((hive) => {
             if (this.currentCollection && (this.currentCollection.id === 'all' || this.currentCollection.id === 'uncollected')) {

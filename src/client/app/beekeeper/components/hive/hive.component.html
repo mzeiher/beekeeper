@@ -1,4 +1,10 @@
-<ul><li *ngIf="currentCollection">{{currentCollection}}</li><li *ngIf="hive">{{hive.id}}</li></ul>
+<ul>
+    <li><a [routerLink]="['/collections']">Collections</a></li>
+    <li *ngIf="currentCollection">
+        <a [routerLink]="['/collection', currentCollection.id]">{{currentCollection.name}}</a>
+    </li>
+    <li *ngIf="hive">{{hive.id}}</li>
+</ul>
 <div *ngIf="hive">
 <div>{{hive.id}}</div>
 <div>{{hive.name}}</div>

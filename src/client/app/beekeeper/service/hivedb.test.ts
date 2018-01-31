@@ -17,6 +17,8 @@ export const hiveDataBase: DataBase = {
             description: "",
             type: "DADANT_US",
 
+            collections: [],
+            
             created: 0,
             lastChanged: 0,
 

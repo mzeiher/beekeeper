@@ -1,3 +1,11 @@
+<ul>
+    <li>
+        <a [routerLink]="['/collections']">Collections</a>
+    </li>
+    <li *ngIf="currentCollection">
+        {{currentCollection.name}}
+    </li>
+</ul>
 <div *ngIf="!hiveList">
     COLLECTION NOT FOUND
 </div>

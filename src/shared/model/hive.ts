@@ -14,6 +14,8 @@ export interface Hive {
     description: string;
     type: HiveType;
 
+    collections: string[];
+
     created: number;
     lastChanged: number;
 

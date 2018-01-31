@@ -35,14 +35,14 @@ export class HiveService {
 
     public addHive(newHive: Hive): Promise<Hive> {
         const hive = <Hive>JSON.parse(JSON.stringify(newHive));
-        hive.id = Math.random().toString();
+        hive.id = new Date().getTime().toString();
         hive.hiveSupers.forEach((hiveSuper) => {
             if (!hiveSuper.id) {
-                hiveSuper.id = Math.random().toString();
+                hiveSuper.id = new Date().getTime().toString();;
             }
             hiveSuper.frames.forEach((frame) => {
                 if (!frame.id) {
-                    frame.id = Math.random().toString();
+                    frame.id = new Date().getTime().toString();;
                 }
             });
         });

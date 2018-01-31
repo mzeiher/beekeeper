@@ -2,5 +2,15 @@
     <li *ngFor="let collection of collections" (click)="selectCollection(collection)">
         {{collection.id}} {{collection.name}}
     </li>
+    <li>
+        <a [routerLink]="['/collection/all']">
+            All
+        </a>
+    </li>
+    <li>
+        <a [routerLink]="['/collection/uncollected']">
+            Uncollected
+        </a>
+    </li>
 </ul>
 <button (click)="addCollection()">Add Collection</button>
