@@ -22,10 +22,6 @@ export class CollectionsComponent implements OnInit {
         });
     }
 
-    selectCollection(collection: Collection) {
-        this.router.navigate(['/collection', collection.id]);
-    }
-
     addCollection() {
         this.collectionService.addCollection({
             id: "",

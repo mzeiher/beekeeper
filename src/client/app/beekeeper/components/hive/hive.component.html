@@ -3,7 +3,7 @@
     <li *ngIf="currentCollection">
         <a [routerLink]="['/collection', currentCollection.id]">{{currentCollection.name}}</a>
     </li>
-    <li *ngIf="hive">{{hive.id}}</li>
+    <li *ngIf="hive">{{hive.name}}</li>
 </ul>
 <div *ngIf="hive">
 <div>{{hive.id}}</div>
@@ -11,5 +11,5 @@
 <textarea>{{hive}}</textarea>
 </div>
 <div *ngIf="!hive">
-    No Hive defined
+    No Hive found or you don't have the permission to view the hive
 </div>

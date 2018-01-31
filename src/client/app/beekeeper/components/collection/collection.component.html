@@ -13,8 +13,8 @@
 
     <div *ngIf="hiveList.length > 0">
         <ul>
-            <li *ngFor="let hive of hiveList" (click)="navigateTo(hive)">
-                {{ hive.name }}
+            <li *ngFor="let hive of hiveList">
+                <a [routerLink]="['/collection', currentCollection.id, 'hive', hive.id]">{{ hive.name }}</a>
             </li>
         </ul>
     </div>

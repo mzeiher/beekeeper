@@ -1,6 +1,6 @@
 <ul>
-    <li *ngFor="let collection of collections" (click)="selectCollection(collection)">
-        {{collection.id}} {{collection.name}}
+    <li *ngFor="let collection of collections">
+        <a [routerLink]="['/collection', collection.id]">{{collection.name}}</a>
     </li>
     <li>
         <a [routerLink]="['/collection/all']">

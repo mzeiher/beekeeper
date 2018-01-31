@@ -17,9 +17,12 @@ export class HiveComponent implements OnInit {
     @Input() hive: Hive;
     @Input() currentCollection: Collection = null;
 
-    constructor(private router: Router, private hiveService: HiveService, private collectionService: CollectionService, private activatedRoute: ActivatedRoute) { }
+    constructor(private router: Router, private hiveService: HiveService, private collectionService: CollectionService, private activatedRoute: ActivatedRoute) { 
+        console.log('constructor');
+    }
 
     ngOnInit() {
+        console.log('on hive init');
         const collectionId = this.activatedRoute.snapshot.paramMap.get('collectionId');
         const hiveId = this.activatedRoute.snapshot.paramMap.get('hiveId');
         if (collectionId && collectionId !== 'all' && collectionId !== 'uncollected') {
