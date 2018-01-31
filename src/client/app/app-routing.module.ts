@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HiveModule } from './beekeeper/beekeeper.module';
-import { HivelistComponent } from './beekeeper/components/hivelist/hivelist.component';
+import { CollectionComponent } from './beekeeper/components/collection/collection.component';
 import { HiveComponent } from './beekeeper/components/hive/hive.component';
 import { CollectionsComponent } from './beekeeper/components/collections/collections.component';
 const appRoutes: Routes = [
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'collection/:collectionId',
-        component: HivelistComponent
+        component: CollectionComponent
     },
     {
         path: 'collection/:collectionId/hive/:hiveId',

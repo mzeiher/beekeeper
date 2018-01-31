@@ -7,12 +7,12 @@ import { CollectionService } from '../../service/collection.service';
 import { Collection } from '../../../../../shared/model/collection';
 
 @Component({
-    selector: 'beekeeper-hivelist',
-    templateUrl: './hivelist.component.html',
-    styleUrls: ['./hivelist.component.css'],
+    selector: 'beekeeper-collection',
+    templateUrl: './collection.component.html',
+    styleUrls: ['./collection.component.css'],
     providers: [CollectionService, HiveService]
 })
-export class HivelistComponent implements OnInit {
+export class CollectionComponent implements OnInit {
 
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
