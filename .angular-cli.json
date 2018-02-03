@@ -19,9 +19,13 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "beekeeper",
             "styles": [
-                "styles.css"
+                "styles.css",
+                "./../../node_modules/@material/card/dist/mdc.card.min.css",
+                "./../../node_modules/@material/button/dist/mdc.button.min.css",
+                "./../../node_modules/@material/dialog/dist/mdc.dialog.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+            ],
             "environmentSource": "environments/environment.ts",
             "environments": {
                 "dev": "environments/environment.ts",

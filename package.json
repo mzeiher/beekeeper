@@ -22,6 +22,9 @@
         "@angular/platform-browser": "^5.0.0",
         "@angular/platform-browser-dynamic": "^5.0.0",
         "@angular/router": "^5.0.0",
+        "@material/button": "^0.29.0",
+        "@material/card": "^0.29.0",
+        "@material/dialog": "^0.29.0",
         "core-js": "^2.4.1",
         "rxjs": "^5.5.2",
         "zone.js": "^0.8.14"

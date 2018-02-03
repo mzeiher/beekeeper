@@ -1,0 +1,13 @@
+#collectionlist {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+}
+
+#collectionlist > beekeeper-collectionlistentry {
+    flex: 1 1 auto;
+    margin: 5px;
+}

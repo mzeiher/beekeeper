@@ -1,16 +1,6 @@
-<ul>
-    <li *ngFor="let collection of collections">
-        <a [routerLink]="['/collection', collection.id]">{{collection.name}}</a>
-    </li>
-    <li>
-        <a [routerLink]="['/collection/all']">
-            All
-        </a>
-    </li>
-    <li>
-        <a [routerLink]="['/collection/uncollected']">
-            Uncollected
-        </a>
-    </li>
-</ul>
+<div id="collectionlist">
+    <beekeeper-collectionlistentry [collatedCollection]="collection" *ngFor="let collection of collections">
+        
+    </beekeeper-collectionlistentry>
+</div>
 <button (click)="addCollection()">Add Collection</button>

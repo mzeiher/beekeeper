@@ -22,6 +22,11 @@ export interface Collection {
 
     description: string;
 
+    position: {
+        lon: number;
+        lat: number;
+    }
+    
     owner: string;
     read: string[];
     write: string[];

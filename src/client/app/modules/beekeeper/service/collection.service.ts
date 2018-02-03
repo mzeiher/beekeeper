@@ -20,7 +20,11 @@ export class CollectionService {
             name: 'all',
             owner: '',
             read: [],
-            write: []
+            write: [],
+            position: {
+                lat: 0,
+                lon: 0
+            }
         }
     }
 
@@ -33,7 +37,11 @@ export class CollectionService {
             name: 'uncollected',
             owner: '',
             read: [],
-            write: []
+            write: [],
+            position: {
+                lat: 0,
+                lon: 0
+            }
         }
     }
 

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { CollectionComponent } from './components/collection/collection.component';
 import { HiveComponent } from './components/hive/hive.component';
 import { CollectionsComponent } from './components/collections/collections.component';
+import { CollectionListEntryComponent } from './components/collections/components/collectionlistentry/collectionlistentry.component';
 
 import { CollectionService } from './service/collection.service';
 import { HiveService } from './service/hive.service';
@@ -13,7 +14,7 @@ import { HiveService } from './service/hive.service';
   imports: [
     CommonModule, RouterModule
   ],
-  declarations: [CollectionComponent, HiveComponent, CollectionsComponent],
+  declarations: [CollectionComponent, HiveComponent, CollectionsComponent, CollectionListEntryComponent],
   providers: [HiveService, CollectionService]
 })
 export class HiveModule { }
