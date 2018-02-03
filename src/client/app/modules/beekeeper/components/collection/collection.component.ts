@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HiveService } from '../../service/hive.service';
-import { Hive } from '../../../../../shared/model/hive';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { HiveService } from '../../service/hive.service';
 import { CollectionService } from '../../service/collection.service';
-import { Collection } from '../../../../../shared/model/collection';
+
+import { Hive } from '../../../../../../shared/model/hive';
+import { Collection } from '../../../../../../shared/model/collection';
 
 @Component({
     selector: 'beekeeper-collection',

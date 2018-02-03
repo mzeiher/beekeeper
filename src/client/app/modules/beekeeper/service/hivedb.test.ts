@@ -1,5 +1,5 @@
-import { Collection } from "../../../../shared/model/collection";
-import { Hive } from "../../../../shared/model/hive";
+import { Collection } from "../../../../../shared/model/collection";
+import { Hive } from "../../../../../shared/model/hive";
 
 interface DataBase {
     "hives": Hive[];

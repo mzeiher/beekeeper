@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Hive } from "../../../../shared/model/hive";
-import { Collection } from '../../../../shared/model/collection';
+import { Hive } from "../../../../../shared/model/hive";
+import { Collection } from '../../../../../shared/model/collection';
 
 import { hiveDataBase } from "./hivedb.test";
 

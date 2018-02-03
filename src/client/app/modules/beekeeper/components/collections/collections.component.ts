@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { Collection } from '../../../../../shared/model/collection';
-import { CollectionService } from '../../service/collection.service';
 import { Router } from '@angular/router';
+
+import { CollectionService } from '../../service/collection.service';
+
+import { Collection } from '../../../../../../shared/model/collection';
 
 @Component({
     selector: 'beekeeper-collections',

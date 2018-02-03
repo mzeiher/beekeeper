@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Collection } from "../../../../shared/model/collection";
+
+import { Collection } from "../../../../../shared/model/collection";
 
 import { collectionDataBase } from "./collectiondb.test";
 

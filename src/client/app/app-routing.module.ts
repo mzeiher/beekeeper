@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HiveModule } from './beekeeper/beekeeper.module';
-import { CollectionComponent } from './beekeeper/components/collection/collection.component';
-import { HiveComponent } from './beekeeper/components/hive/hive.component';
-import { CollectionsComponent } from './beekeeper/components/collections/collections.component';
+import { HiveModule } from './modules/beekeeper/beekeeper.module';
+import { CollectionComponent } from './modules/beekeeper/components/collection/collection.component';
+import { HiveComponent } from './modules/beekeeper/components/hive/hive.component';
+import { CollectionsComponent } from './modules/beekeeper/components/collections/collections.component';
+
 const appRoutes: Routes = [
     {
         path: 'collections',

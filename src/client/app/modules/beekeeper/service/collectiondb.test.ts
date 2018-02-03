@@ -1,4 +1,4 @@
-import { Collection } from "../../../../shared/model/collection";
+import { Collection } from "../../../../../shared/model/collection";
 
 interface DataBase {
     collections: Collection[]
