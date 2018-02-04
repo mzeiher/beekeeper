@@ -15,7 +15,7 @@ type CollatedCollections = CollatedCollection[];
 @Component({
     selector: 'beekeeper-collections',
     templateUrl: './collections.component.html',
-    styleUrls: ['./collections.component.css'],
+    styleUrls: ['./collections.component.scss'],
     providers: [CollectionService, HiveService]
 })
 export class CollectionsComponent implements OnInit {

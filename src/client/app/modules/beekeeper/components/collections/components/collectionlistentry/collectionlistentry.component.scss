@@ -3,15 +3,13 @@
 }
 
 a, a:link, a:visited, a:hover {
-    color: black;
+    color: #000;
+    color: var(--theme-text-primary-on-light, rgba(0, 0, 0, 0.87));
     text-decoration: none;
 }
 
-.mdc-card__title.mdc-card__title--large > i {
-    font-size: 0.875rem;
+ui-card-header > i {
     line-height: 2rem;
+    font-size: 0.8rem;
     vertical-align: top;
-    margin-left: 10px;
-
-    cursor: pointer;
 }

@@ -19,10 +19,7 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "beekeeper",
             "styles": [
-                "styles.css",
-                "./../../node_modules/@material/card/dist/mdc.card.min.css",
-                "./../../node_modules/@material/button/dist/mdc.button.min.css",
-                "./../../node_modules/@material/dialog/dist/mdc.dialog.min.css"
+                "styles.scss"
             ],
             "scripts": [
             ],
@@ -58,7 +55,7 @@
         }
     },
     "defaults": {
-        "styleExt": "css",
+        "styleExt": "scss",
         "component": {}
     }
 }

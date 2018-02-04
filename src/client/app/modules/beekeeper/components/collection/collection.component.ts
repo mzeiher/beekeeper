@@ -11,7 +11,7 @@ import { Collection } from '../../../../../../shared/model/collection';
 @Component({
     selector: 'beekeeper-collection',
     templateUrl: './collection.component.html',
-    styleUrls: ['./collection.component.css'],
+    styleUrls: ['./collection.component.scss'],
     providers: [CollectionService, HiveService]
 })
 export class CollectionComponent implements OnInit {

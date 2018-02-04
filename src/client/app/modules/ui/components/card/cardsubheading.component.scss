@@ -1,0 +1,16 @@
+:host {
+    display: block;
+    
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    color: rgba(0, 0, 0, 0.87);
+    color: var(--theme-text-primary-on-light, rgba(0, 0, 0, 0.87));
+    margin: -.063rem 0;
+}

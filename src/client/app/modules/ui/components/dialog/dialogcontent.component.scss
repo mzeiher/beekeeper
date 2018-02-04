@@ -1,0 +1,15 @@
+:host {
+    color: rgba(0, 0, 0, 0.54);
+    color: var(--theme-text-secondary-on-light, rgba(0, 0, 0, 0.54));
+
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-decoration: inherit;
+    text-transform: inherit;
+    margin-top: 1.25rem;
+    padding: 0 2.5rem 2.5rem;
+}

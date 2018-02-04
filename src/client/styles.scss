@@ -147,6 +147,8 @@ a, a:link, a:visited {
 
 html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 
     height: 100%;
     width: 100%;
@@ -155,5 +157,11 @@ html, body {
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 3rem;
 }
+
+html {
+    font-size: 100%;
+}
+
+@import './sass/theme.scss'

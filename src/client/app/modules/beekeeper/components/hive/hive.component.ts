@@ -10,7 +10,7 @@ import { Collection } from '../../../../../../shared/model/collection';
 @Component({
     selector: 'beekeeper-hive',
     templateUrl: './hive.component.html',
-    styleUrls: ['./hive.component.css'],
+    styleUrls: ['./hive.component.scss'],
     providers: [HiveService, CollectionService]
 })
 export class HiveComponent implements OnInit {
