@@ -2,8 +2,23 @@
     display: block;
 }
 
+a, a:link, a:active, a:visited, a:hover {
+
+    text-decoration: none;
+
+    color: #000;
+    color: var(--theme-text-primary-on-light, rgba(0, 0, 0, 0.87));
+
+    font-weight: 500;
+
+}
+
 table {
     width: 100%;
+
+    color: #000;
+    color: var(--theme-text-primary-on-light, rgba(0, 0, 0, 0.87));
+
 }
 
 table > thead {

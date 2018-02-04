@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let hive of hiveList">
-            <td>{{hive.name}}</td>
+            <td><a [routerLink]="['/collection', currentCollection.id, 'hive', hive.id]">{{hive.name}}</a></td>
             <td>{{hive.type}}</td>
             <td>{{hive.currentSubjectiveHealth}}</td>
             <td>{{hive.currentSubjectiveMeekness}}</td>

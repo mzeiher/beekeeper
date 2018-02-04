@@ -11,6 +11,8 @@ import { CollectionsComponent } from './components/collections/collections.compo
 import { CollectionListEntryComponent } from './components/collections/components/collectionlistentry/collectionlistentry.component';
 import { CollectionInfoComponent } from './components/collection/components/collectioninfo/collectioninfo.component';
 import { HiveListComponent } from './components/collection/components/hivelist/hivelist.component';
+import { HiveInfoComponent } from './components/hive/components/hiveinfo/hiveinfo.component';
+import { SuperListComponent } from './components/hive/components/superlist/superlist.component';
 
 import { CollectionService } from './service/collection.service';
 import { HiveService } from './service/hive.service';
@@ -29,7 +31,9 @@ import { UiService } from '../utils/services/uiservice.service';
       CollectionsComponent, 
       CollectionListEntryComponent,
       HiveListComponent,
-      CollectionInfoComponent
+      CollectionInfoComponent,
+      HiveInfoComponent,
+      SuperListComponent
     ],
   providers: [HiveService, CollectionService, UiService],
   entryComponents: []

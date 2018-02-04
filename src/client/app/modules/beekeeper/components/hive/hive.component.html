@@ -1,15 +1,21 @@
-<ul>
-    <li><a [routerLink]="['/collections']">Collections</a></li>
-    <li *ngIf="currentCollection">
-        <a [routerLink]="['/collection', currentCollection.id]">{{currentCollection.name}}</a>
-    </li>
-    <li *ngIf="hive">{{hive.name}}</li>
-</ul>
-<div *ngIf="hive">
-<div>{{hive.id}}</div>
-<div>{{hive.name}}</div>
-<textarea>{{hive}}</textarea>
-</div>
-<div *ngIf="!hive">
-    No Hive found or you don't have the permission to view the hive
-</div>
+<beekeeper-hiveinfo [currentCollection]="currentCollection">
+</beekeeper-hiveinfo>
+<ui-card *ngIf="hive">
+    <ui-card-content>
+        <ui-card-header>{{hive.name}}</ui-card-header>
+        <ui-card-subheading>
+            <i class="fa fa-archive"></i> {{hive.type}}</ui-card-subheading>
+        <ui-card-subheading *ngIf="hive.description">{{hive.description}}</ui-card-subheading>
+    </ui-card-content>
+    <ui-card-content class="rating">
+        <div>
+            {{hive.currentSubjectiveHealth}}
+        </div>
+        <div>
+            {{hive.currentSubjectiveMeekness}}
+        </div>
+    </ui-card-content>
+    <ui-card-content>
+        <beekeeper-superlist [hiveSupers]="hive.hiveSupers"></beekeeper-superlist>
+    </ui-card-content>
+</ui-card>

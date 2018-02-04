@@ -1,0 +1,16 @@
+ui-card {
+    margin: 0.5rem;
+}
+
+ui-card-content.rating {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+ui-card-content.rating div {
+    flex: 0 1 auto;
+}

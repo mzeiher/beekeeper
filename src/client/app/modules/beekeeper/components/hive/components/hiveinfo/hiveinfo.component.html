@@ -1,0 +1,2 @@
+<div *ngIf="!currentCollection" class="overview"><a [routerLink]="['/collection', 'all']"><i class="fa fa-arrow-left"></i><span> All</span></a></div>
+<div *ngIf="currentCollection" class="overview"><a [routerLink]="['/collection', currentCollection.id]"><i class="fa fa-arrow-left"></i><span> {{currentCollection.name}}</span></a></div>

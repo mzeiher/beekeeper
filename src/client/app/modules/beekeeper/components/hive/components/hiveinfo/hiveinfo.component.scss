@@ -1,0 +1,24 @@
+:host {
+    display: block;
+    width: 100%;
+
+    background-color: rgba(0,0,0,0.5);
+    background-color: var(--theme-secondary-dark, rgba(0,0,0,0.5));
+
+    color: #fff;
+    color: var(--theme-primary-text-on-dark, #fff);
+}
+
+a, a:link, a:visited, a:hover {
+    color: #fff;
+    color: var(--theme-primary-text-on-dark, #fff);
+
+    text-decoration: none;
+}
+
+.overview {
+    padding: 1em 0 1em 1em;
+
+    font-size: 1rem;
+    text-transform: uppercase;
+}
