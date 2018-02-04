@@ -1,25 +1,8 @@
-<ul>
-    <li>
-        <a [routerLink]="['/collections']">Collections</a>
-    </li>
-    <li *ngIf="currentCollection">
-        {{currentCollection.name}}
-    </li>
-</ul>
-<div *ngIf="!hiveList">
-    COLLECTION NOT FOUND
-</div>
-<div *ngIf="hiveList">
-
-    <div *ngIf="hiveList.length > 0">
-        <ul>
-            <li *ngFor="let hive of hiveList">
-                <a [routerLink]="['/collection', currentCollection.id, 'hive', hive.id]">{{ hive.name }}</a>
-            </li>
-        </ul>
-    </div>
-    <div *ngIf="hiveList.length === 0">
-        No Hives
-    </div>
-    <button (click)="addHive()">Add Hive</button>
-</div>
+<beekeeper-collectioninfo [collection]="currentCollection">
+</beekeeper-collectioninfo>
+<ui-card>
+    <ui-card-content>
+        <beekeeper-hivelist [hiveList]="hiveList"></beekeeper-hivelist>
+    </ui-card-content>
+</ui-card>
+<button (click)="addHive()">Add Hive</button>

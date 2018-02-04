@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Health</th>
+            <th>Meekness</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let hive of hiveList">
+            <td>{{hive.name}}</td>
+            <td>{{hive.type}}</td>
+            <td>{{hive.currentSubjectiveHealth}}</td>
+            <td>{{hive.currentSubjectiveMeekness}}</td>
+            <td>test</td>
+        </tr>
+    </tbody>
+</table>

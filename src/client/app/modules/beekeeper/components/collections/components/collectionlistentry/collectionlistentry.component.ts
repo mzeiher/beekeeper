@@ -1,9 +1,10 @@
-import { Component, Input, ViewChild, ElementRef} from "@angular/core";
+import { Component, Input, ViewChild, ElementRef, EventEmitter, Output} from "@angular/core";
 
 import { CollatedCollection } from "../../model/collatedmodel.model";
 
 import { CollectionService } from "../../../../service/collection.service";
 import { UiService } from "../../../../../utils/services/uiservice.service";
+import { Collection } from "../../../../../../../../shared/model/collection";
 
 
 @Component({
@@ -15,12 +16,13 @@ import { UiService } from "../../../../../utils/services/uiservice.service";
 export class CollectionListEntryComponent {
 
     @Input() collatedCollection: CollatedCollection;
+    @Output() onEdit: EventEmitter<Collection> = new EventEmitter<Collection>(true);
 
     constructor(private collectionService: CollectionService, private uiService:UiService) {
     }
     
-    changeName():void {
-            
+    editClick():void {
+        this.onEdit.emit(this.collatedCollection.targetCollection);
     }
 
 }

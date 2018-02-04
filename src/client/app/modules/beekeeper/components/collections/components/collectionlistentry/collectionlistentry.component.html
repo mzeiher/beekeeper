@@ -2,7 +2,7 @@
     <ui-card-content>
         <ui-card-header>
             <a [routerLink]="['/collection', collatedCollection.id]">{{collatedCollection.name}}</a>
-            <i *ngIf="collatedCollection.targetCollection" class="fa fa-edit" (click)="changeName()"></i>
+            <i *ngIf="collatedCollection.targetCollection" class="fa fa-edit" (click)="editClick()"></i>
         </ui-card-header>
         <ui-card-subheading *ngIf="collatedCollection && collatedCollection.position">
             <i class="fa fa-map"></i> Lat: {{collatedCollection.position.lat}} Lon: {{collatedCollection.position.lon}}
@@ -12,27 +12,3 @@
         </ui-card-subheading>
     </ui-card-content>
 </ui-card>
-
-<!--<div id="entry" class="mdc-card">
-    <div class="mdc-card__horizontal-block">
-        <section class="mdc-card__primary">
-            <h1 class="mdc-card__title mdc-card__title--large">
-                <a [routerLink]="['/collection', collatedCollection.id]">{{collatedCollection.name}}</a>
-                <i *ngIf="collatedCollection.targetCollection" class="fa fa-edit" (click)="changeName()"></i>
-            </h1>
-            <h2 class="mdc-card__subtitle" *ngIf="collatedCollection && collatedCollection.position">
-                <i class="fa fa-map"></i> Lat: {{collatedCollection.position.lat}} Lon: {{collatedCollection.position.lon}}
-            </h2>
-            <h2 class="mdc-card__subtitle">
-                <i class="fa fa-archive"></i> {{collatedCollection.hives.length}} Hive(s) in this collection</h2>
-        </section>
-        <img *ngIf="collatedCollection.image" class="mdc-card__media-item" />
-    </div>
-    <section class="mdc-card__supporting-text">
-        {{collatedCollection.description}}
-    </section>
-    <section class="mdc-card__actions">
-
-    </section>
-</div>
--->

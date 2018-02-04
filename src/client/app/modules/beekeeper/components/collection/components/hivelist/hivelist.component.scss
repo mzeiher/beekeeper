@@ -1,0 +1,35 @@
+:host {
+    display: block;
+}
+
+table {
+    width: 100%;
+}
+
+table > thead {
+    border-bottom: 2px solid #ddd;
+}
+
+table > thead th {
+    font-weight: 500;
+    text-transform: uppercase;
+
+    text-align: left;
+
+    font-size: 1rem;
+    line-height: 2rem;
+
+    padding: 0.25rem;
+}
+
+table > tbody td {
+    font-weight: 400;
+
+    font-size: 1rem;
+    line-height: 2rem;
+    padding: 0.25rem;
+}
+
+table > tbody > tr {
+    cursor: default;
+}

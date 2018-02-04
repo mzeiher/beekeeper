@@ -21,6 +21,7 @@ type CollatedCollections = CollatedCollection[];
 export class CollectionsComponent implements OnInit {
 
     @Input() collections: CollatedCollections;
+    @Input() currentCollectionEdit:Collection;
 
     constructor(private router: Router, private collectionService: CollectionService, private hiveService: HiveService) { }
 
@@ -101,6 +102,23 @@ export class CollectionsComponent implements OnInit {
 
             this.collections = collatedCollections;
         });
+    }
+
+    editCollection(collection:Collection) {
+        this.currentCollectionEdit = collection;
+    }
+
+    cancelEdit() {
+        this.currentCollectionEdit = null;
+    }
+    
+    updateCollection() {
+        if(this.currentCollectionEdit) {
+            this.collectionService.updateCollection(this.currentCollectionEdit).then(() => {
+                this.currentCollectionEdit = null;
+                this.ngOnInit();
+            });
+        }
     }
 
     addCollection() {

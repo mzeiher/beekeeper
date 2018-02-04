@@ -1,6 +1,23 @@
 <div id="collectionlist">
-    <beekeeper-collectionlistentry [collatedCollection]="collection" *ngFor="let collection of collections">
-        
+    <beekeeper-collectionlistentry [collatedCollection]="collection" *ngFor="let collection of collections" (onEdit)="editCollection($event)">
+
     </beekeeper-collectionlistentry>
 </div>
+<ui-dialog *ngIf="currentCollectionEdit">
+    <ui-dialog-header>Edit Collection</ui-dialog-header>
+    <ui-dialog-content>
+        <div>
+            Name:
+            <input type="text" value="{{currentCollectionEdit.name}}" (input)="currentCollectionEdit.name = $event.target.value"/>
+        </div>
+        <div>
+            Description:
+            <textarea (input)="currentCollectionEdit.description = $event.target.value">{{currentCollectionEdit.description}}</textarea>
+        </div>
+    </ui-dialog-content>
+    <ui-dialog-footer>
+        <button (click)="cancelEdit()">Cancel</button>
+        <button (click)="updateCollection()">ok</button>
+    </ui-dialog-footer>
+</ui-dialog>
 <button (click)="addCollection()">Add Collection</button>

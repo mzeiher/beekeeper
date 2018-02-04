@@ -79,14 +79,6 @@ export class CollectionComponent implements OnInit {
 
     }
 
-    public navigateTo(hive: Hive) {
-        if (this.currentCollection) {
-            this.router.navigate(['/collection', this.currentCollection.id, 'hive', hive.id]);
-        } else {
-            this.router.navigate(['/hive', hive.id]);
-        }
-    }
-
     private reloadList() {
         if (this.currentCollection !== null) {
             if (this.currentCollection.id === 'all') {
