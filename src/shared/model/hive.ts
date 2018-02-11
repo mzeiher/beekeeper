@@ -51,7 +51,6 @@ export interface Hive {
      */
     hiveSupers: HiveSuper[]; // zargen
     history: HiveHistoryEntry<keyof HiveHistoryEntryMap>[];
-    activity: Activity<keyof ActivityMap>[];
 }
 
 export type HiveSuperType = "ROOF" | "BROOD_SUPER" | "HONEY_SUPER" | "FEEDER" | "COVER" | "QUEEN_EXCLUDER" | "HIGH_BOTTOM_BOARD" | "LOW_BOTTOM_BOARD" | "BIENENFLUCHT"

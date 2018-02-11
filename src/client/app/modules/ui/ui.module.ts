@@ -8,6 +8,11 @@ import { DialogComponent } from "./components/dialog/dialog.component";
 import { DialogContentComponent } from "./components/dialog/dialogcontent.component";
 import { DialogFooterComponent } from "./components/dialog/dialogfooter.component";
 import { DialogHeaderComponent } from "./components/dialog/dialogheader.component";
+import { CardDividerComponent } from "./components/card/carddivider.component";
+import { DialogServiceComponent } from "./components/dialog/service/dialogservice.component";
+
+import { UiService } from "../utils/services/uiservice.service";
+import { DialogService } from "./components/dialog/service/dialog.service";
 
 @NgModule({
     declarations: [
@@ -19,9 +24,11 @@ import { DialogHeaderComponent } from "./components/dialog/dialogheader.componen
         DialogComponent,
         DialogContentComponent,
         DialogFooterComponent,
-        DialogHeaderComponent
+        DialogHeaderComponent,
+        CardDividerComponent,
+        DialogServiceComponent
     ],
-    providers: [],
+    providers: [DialogService, UiService],
     imports: [],
     exports: [
         CardComponent,
@@ -32,7 +39,11 @@ import { DialogHeaderComponent } from "./components/dialog/dialogheader.componen
         DialogComponent,
         DialogContentComponent,
         DialogFooterComponent,
-        DialogHeaderComponent
+        DialogHeaderComponent,
+        CardDividerComponent
+    ],
+    entryComponents: [
+        DialogServiceComponent
     ]
 })
 export class UIModule {}

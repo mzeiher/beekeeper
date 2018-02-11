@@ -13,6 +13,7 @@ import { CollectionInfoComponent } from './components/collection/components/coll
 import { HiveListComponent } from './components/collection/components/hivelist/hivelist.component';
 import { HiveInfoComponent } from './components/hive/components/hiveinfo/hiveinfo.component';
 import { SuperListComponent } from './components/hive/components/superlist/superlist.component';
+import { EditCollectionComponent } from './components/collection/components/editcollection/editcollection.component';
 
 import { CollectionService } from './service/collection.service';
 import { HiveService } from './service/hive.service';
@@ -33,9 +34,10 @@ import { UiService } from '../utils/services/uiservice.service';
       HiveListComponent,
       CollectionInfoComponent,
       HiveInfoComponent,
-      SuperListComponent
+      SuperListComponent,
+      EditCollectionComponent
     ],
   providers: [HiveService, CollectionService, UiService],
-  entryComponents: []
+  entryComponents: [EditCollectionComponent]
 })
 export class HiveModule { }

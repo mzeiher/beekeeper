@@ -17,6 +17,10 @@ export class DynamicComponent<T> {
     destroy() {
         this.appRef.detachView(this.componentRef.hostView);
         this.componentRef.destroy();
+        if(this.rootNode.parentElement !== null) {
+            this.rootNode.parentElement.removeChild(this.rootNode);
+        }
+        this.rootNode.remove();
     }
 
 }
@@ -27,7 +31,6 @@ export class UiService {
     constructor(private componentFactoryResolver: ComponentFactoryResolver, private appRef: ApplicationRef, private injector: Injector) { }
 
     createDynamicComponent<T>(component: Type<T>): DynamicComponent<T> {
-        debugger;
         return new DynamicComponent<T>(component, this.appRef, this.injector, this.componentFactoryResolver);
     }
 }

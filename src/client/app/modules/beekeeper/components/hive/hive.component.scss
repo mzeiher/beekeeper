@@ -14,3 +14,11 @@ ui-card-content.rating {
 ui-card-content.rating div {
     flex: 0 1 auto;
 }
+
+ui-card-header > i {
+    line-height: 2rem;
+    font-size: 0.8rem;
+    vertical-align: top;
+
+    cursor: pointer;
+}

@@ -9,6 +9,6 @@ import { Collection } from "../../../../../../../../shared/model/collection";
 })
 export class HiveInfoComponent {
 
-    @Input() currentCollection: Collection 
+    @Input() currentCollection: Collection
 
 }

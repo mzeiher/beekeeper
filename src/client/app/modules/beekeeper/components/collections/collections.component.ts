@@ -9,6 +9,9 @@ import { Hive } from '../../../../../../shared/model/hive';
 import { CollatedCollection } from "./model/collatedmodel.model";
 
 import { HiveService } from '../../service/hive.service';
+import { UiService } from '../../../utils/services/uiservice.service';
+import { EditCollectionComponent } from '../collection/components/editcollection/editcollection.component';
+import { DialogService } from '../../../ui/components/dialog/service/dialog.service';
 
 type CollatedCollections = CollatedCollection[];
 
@@ -16,14 +19,17 @@ type CollatedCollections = CollatedCollection[];
     selector: 'beekeeper-collections',
     templateUrl: './collections.component.html',
     styleUrls: ['./collections.component.scss'],
-    providers: [CollectionService, HiveService]
+    providers: [CollectionService, HiveService, UiService]
 })
 export class CollectionsComponent implements OnInit {
 
     @Input() collections: CollatedCollections;
-    @Input() currentCollectionEdit:Collection;
 
-    constructor(private router: Router, private collectionService: CollectionService, private hiveService: HiveService) { }
+    constructor(private router: Router, 
+                private collectionService: CollectionService, 
+                private hiveService: HiveService, 
+                private uiService: UiService,
+                private dialogService: DialogService) { }
 
     ngOnInit() {
         this.collectionService.getAllCollections().then((collections) => {
@@ -105,20 +111,14 @@ export class CollectionsComponent implements OnInit {
     }
 
     editCollection(collection:Collection) {
-        this.currentCollectionEdit = collection;
-    }
+        const component = this.uiService.createDynamicComponent(EditCollectionComponent);
+        component.component.collection = JSON.parse(JSON.stringify(collection));
+        document.querySelector('body').appendChild(component.rootNode);
+        
+        window.setTimeout(() => {
+            component.destroy();
+        },1000);
 
-    cancelEdit() {
-        this.currentCollectionEdit = null;
-    }
-    
-    updateCollection() {
-        if(this.currentCollectionEdit) {
-            this.collectionService.updateCollection(this.currentCollectionEdit).then(() => {
-                this.currentCollectionEdit = null;
-                this.ngOnInit();
-            });
-        }
     }
 
     addCollection() {

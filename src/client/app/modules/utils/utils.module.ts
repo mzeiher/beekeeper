@@ -4,7 +4,7 @@ import { UiService } from "./services/uiservice.service";
 @NgModule({
     declarations: [],
     imports: [],
-    providers: [],
+    providers: [UiService],
     exports: []
 })
 export class UtilsModule { }

@@ -17,6 +17,7 @@ export class HiveComponent implements OnInit {
 
     @Input() hive: Hive;
     @Input() currentCollection: Collection = null;
+    @Input() currentHiveEdit:Hive;
 
     constructor(private router: Router, private hiveService: HiveService, private collectionService: CollectionService, private activatedRoute: ActivatedRoute) { 
         
@@ -51,5 +52,20 @@ export class HiveComponent implements OnInit {
             this.hive = null;
         });
 
+    }
+
+    editHive() {
+        this.currentHiveEdit = JSON.parse(JSON.stringify(this.hive));
+    }
+    cancelEdit() {
+        this.currentHiveEdit = null;
+    }
+
+    updateHive() {
+        debugger;
+        this.hiveService.updateHive(this.currentHiveEdit).then((hive) => {
+            this.currentHiveEdit = null;
+            this.hive = hive;
+        });
     }
 }

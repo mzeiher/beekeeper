@@ -47,7 +47,7 @@ export class CollectionService {
 
     public addCollection(collection: Collection): Promise<Collection> {
         const clone = <Collection>JSON.parse(JSON.stringify(collection));
-        clone.id = new Date().getTime().toString();
+        clone.id = Math.random().toString();
         collectionDataBase.collections.push(clone);
         window.localStorage.setItem('collectionDataBase', JSON.stringify(collectionDataBase));
         return Promise.resolve(clone);

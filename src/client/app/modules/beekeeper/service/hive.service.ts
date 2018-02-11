@@ -35,14 +35,14 @@ export class HiveService {
 
     public addHive(newHive: Hive): Promise<Hive> {
         const hive = <Hive>JSON.parse(JSON.stringify(newHive));
-        hive.id = new Date().getTime().toString();
+        hive.id = Math.random().toString();
         hive.hiveSupers.forEach((hiveSuper) => {
             if (!hiveSuper.id) {
-                hiveSuper.id = new Date().getTime().toString();;
+                hiveSuper.id = Math.random().toString();
             }
             hiveSuper.frames.forEach((frame) => {
                 if (!frame.id) {
-                    frame.id = new Date().getTime().toString();;
+                    frame.id = Math.random().toString();
                 }
             });
         });
@@ -66,8 +66,14 @@ export class HiveService {
     }
 
     public updateHive(hive: Hive): Promise<Hive> {
-        window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
-        return Promise.reject('not implemented');
+        for(let i = 0; i < hiveDataBase.hives.length ; i++) {
+            if(hive.id === hiveDataBase.hives[i].id) {
+                hiveDataBase.hives[i] = hive;
+                window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
+                return Promise.resolve(hive);
+            }
+        }
+        return Promise.reject('no hive found');
     }
 
     public deleteHive(hive: Hive): Promise<boolean> {
@@ -77,7 +83,6 @@ export class HiveService {
 
     public addTemplate(hive: Hive): Promise<boolean> {
         const clone = <Hive>JSON.parse(JSON.stringify(hive));
-        clone.activity = [];
         clone.history = [];
         clone.id = '';
         clone.hiveSupers.forEach((hiveSuper) => {

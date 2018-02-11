@@ -66,8 +66,7 @@ export const hiveDataBase: DataBase = {
                 maxFrameCount: 0,
                 subtype: ""
             }],
-            history: [],
-            activity: []
+            history: []
         }
     ]
 }
