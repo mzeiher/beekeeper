@@ -1,17 +1,15 @@
-<ui-dialog *ngIf="collection">
-    <ui-dialog-header>Edit Collection</ui-dialog-header>
-    <ui-dialog-content>
-        <div>
-            Name:
-            <input type="text" value="{{collection.name}}" (input)="collection.name = $event.target.value"/>
-        </div>
-        <div>
-            Description:
-            <textarea (input)="collection.description = $event.target.value">{{collection.description}}</textarea>
-        </div>
-    </ui-dialog-content>
-    <ui-dialog-footer>
-        <button (click)="cancelEdit()">Cancel</button>
-        <button (click)="updateCollection()">ok</button>
-    </ui-dialog-footer>
-</ui-dialog>
+<ui-dialog-header>Edit Collection</ui-dialog-header>
+<ui-dialog-content *ngIf="collection">
+    <div>
+        Name:
+        <input type="text" value="{{collection.name}}" (input)="collection.name = $event.target.value" />
+    </div>
+    <div>
+        Description:
+        <textarea (input)="collection.description = $event.target.value">{{collection.description}}</textarea>
+    </div>
+</ui-dialog-content>
+<ui-dialog-footer>
+    <button (click)="cancelEdit()">Cancel</button>
+    <button (click)="updateCollection()">ok</button>
+</ui-dialog-footer>

@@ -1,16 +1,20 @@
-import { Injectable, Type, Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { Injectable, Type, Component, ViewChild, ViewContainerRef, ElementRef, Input, Output, EventEmitter } from "@angular/core";
+import { Button } from "./dialog.service";
+import { Subject } from "rxjs/Subject";
 
 @Component({
-    template: `
-    <ui-dialog>
-    <template #content>
-    </template>
-    <ui-dialog-footer #footer>
-    </ui-dialog-footer>
-    </ui-dialog>
-    `
+    templateUrl: './dialogservice.component.html'
 })
 export class DialogServiceComponent {
-    @ViewChild('content') content: ViewContainerRef;
-    @ViewChild('footer') footer: ViewContainerRef;
+
+    @Input() type:string = "dialog";
+    @Input() buttons:Button[] = [];
+    @Output() click:Subject<string> = new Subject<string>();
+
+    @ViewChild('content', { read: ViewContainerRef }) container: ViewContainerRef;
+
+    buttonClick(button:Button) {
+        this.click.next(button.id);
+    }
+
 }

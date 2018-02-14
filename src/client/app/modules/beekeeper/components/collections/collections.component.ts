@@ -111,14 +111,12 @@ export class CollectionsComponent implements OnInit {
     }
 
     editCollection(collection:Collection) {
-        const component = this.uiService.createDynamicComponent(EditCollectionComponent);
-        component.component.collection = JSON.parse(JSON.stringify(collection));
-        document.querySelector('body').appendChild(component.rootNode);
-        
-        window.setTimeout(() => {
-            component.destroy();
-        },1000);
-
+        const dialog = this.dialogService.createDialog(EditCollectionComponent, [{id: 'cancel', label: 'CANCEL'},{id: 'ok', label: 'OK'}]);
+        dialog.getComponent().collection = collection;
+        dialog.open();
+        dialog.addClickListener((id, dlg) => {
+            dlg.close();
+        });
     }
 
     addCollection() {

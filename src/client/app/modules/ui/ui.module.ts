@@ -13,6 +13,7 @@ import { DialogServiceComponent } from "./components/dialog/service/dialogservic
 
 import { UiService } from "../utils/services/uiservice.service";
 import { DialogService } from "./components/dialog/service/dialog.service";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { DialogService } from "./components/dialog/service/dialog.service";
         DialogServiceComponent
     ],
     providers: [DialogService, UiService],
-    imports: [],
+    imports: [CommonModule],
     exports: [
         CardComponent,
         CardHeaderComponent,

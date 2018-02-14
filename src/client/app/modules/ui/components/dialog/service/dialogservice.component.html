@@ -1,0 +1,7 @@
+<ui-dialog [attr.role]="type">
+    <div #content>
+    </div>
+    <ui-dialog-footer *ngIf="buttons">
+        <button *ngFor="let button of buttons" [attr.value]="button.id" (click)="buttonClick(button)">{{button.id}}</button>
+    </ui-dialog-footer>
+</ui-dialog>

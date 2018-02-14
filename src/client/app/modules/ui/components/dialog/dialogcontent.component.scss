@@ -1,6 +1,8 @@
 :host {
     color: rgba(0, 0, 0, 0.54);
     color: var(--theme-text-secondary-on-light, rgba(0, 0, 0, 0.54));
+    
+    display: block;
 
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

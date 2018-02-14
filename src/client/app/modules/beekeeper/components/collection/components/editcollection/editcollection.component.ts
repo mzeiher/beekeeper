@@ -10,7 +10,7 @@ import { CollectionService } from "../../../../service/collection.service";
 })
 export class EditCollectionComponent {
 
-    @Input() collection: Collection
+    @Input() collection: Collection;
     @Output() onAction: EventEmitter<string> = new EventEmitter<string>(true);
 
     constructor(private collectionService:CollectionService) {}
