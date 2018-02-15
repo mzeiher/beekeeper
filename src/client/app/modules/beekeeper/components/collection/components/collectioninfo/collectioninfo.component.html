@@ -1,3 +1,3 @@
 <div id="overview"><a [routerLink]="['/collections']"><i class="fa fa-arrow-left"></i><span> Overview</span></a></div>
-<h1 *ngIf="collection">{{collection.name}}</h1>
+<h1 *ngIf="collection">{{collection.name}} <i *ngIf="collection.id !== 'uncollected' && collection.id !== 'all'" class="fa fa-edit" (click)="editClick()"></i></h1>
 <h2 *ngIf="collection && collection.description">{{collection.description}}</h2>

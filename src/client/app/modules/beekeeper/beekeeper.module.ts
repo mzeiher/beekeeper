@@ -18,6 +18,7 @@ import { EditCollectionComponent } from './components/collection/components/edit
 import { CollectionService } from './service/collection.service';
 import { HiveService } from './service/hive.service';
 import { UiService } from '../utils/services/uiservice.service';
+import { HiveMapComponent } from './components/hivemap/hivemap.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { UiService } from '../utils/services/uiservice.service';
       CollectionInfoComponent,
       HiveInfoComponent,
       SuperListComponent,
-      EditCollectionComponent
+      EditCollectionComponent,
+      HiveMapComponent
     ],
   providers: [HiveService, CollectionService, UiService],
   entryComponents: [EditCollectionComponent]

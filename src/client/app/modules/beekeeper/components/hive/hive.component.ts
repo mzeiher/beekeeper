@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { map } from 'leaflet';
 
 import { HiveService } from '../../service/hive.service';
 import { CollectionService } from '../../service/collection.service';

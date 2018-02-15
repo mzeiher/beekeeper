@@ -35,6 +35,14 @@ h1 {
     text-transform: uppercase;
 }
 
+h1 > i {
+    line-height: 2rem;
+    font-size: 0.8rem;
+    vertical-align: top;
+
+    cursor: pointer;
+}
+
 h2 {
     margin: -0.75rem 0 0 0;
     padding: 0 0 1rem 1rem;

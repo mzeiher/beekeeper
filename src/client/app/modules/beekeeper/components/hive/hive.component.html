@@ -5,25 +5,8 @@
         <ui-card-header>{{hive.name}}<i class="fa fa-edit" (click)="editHive()"></i></ui-card-header>
         <ui-card-subheading>{{hive.type}}</ui-card-subheading>
     </ui-card-content>
-    <ui-card-divider></ui-card-divider>
+    <beekeeper-hivemap></beekeeper-hivemap>
     <ui-card-content>
         <beekeeper-superlist [hiveSupers]="hive.hiveSupers"></beekeeper-superlist>
     </ui-card-content>
 </ui-card>
-<ui-dialog *ngIf="currentHiveEdit">
-    <ui-dialog-header>Edit Hive</ui-dialog-header>
-    <ui-dialog-content>
-        <div>
-            Name:
-            <input type="text" value="{{currentHiveEdit.name}}" (input)="currentHiveEdit.name = $event.target.value"/>
-        </div>
-        <div>
-            Description:
-            <textarea (input)="currentCollectionEdit.description = $event.target.value">{{currentHiveEdit.description}}</textarea>
-        </div>
-    </ui-dialog-content>
-    <ui-dialog-footer>
-        <button (click)="cancelEdit()">Cancel</button>
-        <button (click)="updateHive()">ok</button>
-    </ui-dialog-footer>
-</ui-dialog>

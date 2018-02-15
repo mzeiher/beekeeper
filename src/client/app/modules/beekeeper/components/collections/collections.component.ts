@@ -111,11 +111,15 @@ export class CollectionsComponent implements OnInit {
     }
 
     editCollection(collection:Collection) {
-        const dialog = this.dialogService.createDialog(EditCollectionComponent, [{id: 'cancel', label: 'CANCEL'},{id: 'ok', label: 'OK'}]);
-        dialog.getComponent().collection = collection;
+        const dialog = this.dialogService.createDialog(EditCollectionComponent, [{id: 'ok', label: 'OK'},{id: 'cancel', label: 'CANCEL'}]);
+        dialog.getComponent().collection = JSON.parse(JSON.stringify(collection));
         dialog.open();
         dialog.addClickListener((id, dlg) => {
-            dlg.close();
+            if(id === 'ok') {
+                this.collectionService.updateCollection(dialog.getComponent().collection);
+                this.ngOnInit();
+            }
+            dialog.close();
         });
     }
 
