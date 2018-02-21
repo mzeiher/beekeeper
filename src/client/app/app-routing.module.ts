@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { HiveModule } from './modules/beekeeper/beekeeper.module';
 import { CollectionComponent } from './modules/beekeeper/components/collection/collection.component';
 import { HiveComponent } from './modules/beekeeper/components/hive/hive.component';
-import { CollectionsComponent } from './modules/beekeeper/components/collections/collections.component';
+import { ApiariesComponent } from './modules/beekeeper/components/apiaries/apiaries.component';
 
 const appRoutes: Routes = [
     {
         path: 'apiaries',
-        component: CollectionsComponent
+        component: ApiariesComponent
     },
     {
         path: 'apiary/:apiaryId',
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        component: CollectionsComponent
+        component: ApiariesComponent
     }
 ];
 

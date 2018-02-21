@@ -1,0 +1,6 @@
+<div id="collectionlist">
+    <beekeeper-apiaryentry [apiary]="apiary" *ngFor="let apiary of apiaries" (onEdit)="editApiary($event)">
+
+    </beekeeper-apiaryentry>
+</div>
+<button (click)="addApiary()">Apiary</button>

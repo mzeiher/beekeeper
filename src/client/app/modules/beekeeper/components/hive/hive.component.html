@@ -1,11 +1,11 @@
 <beekeeper-hiveinfo [currentApiary]="currentApiary">
 </beekeeper-hiveinfo>
 <ui-card *ngIf="hive">
+    <beekeeper-hivemap></beekeeper-hivemap>
     <ui-card-content>
         <ui-card-header>{{hive.name}}<i class="fa fa-edit" (click)="editHive()"></i></ui-card-header>
         <ui-card-subheading>{{hive.type}}</ui-card-subheading>
     </ui-card-content>
-    <beekeeper-hivemap></beekeeper-hivemap>
     <ui-card-content>
         <beekeeper-superlist [hiveSupers]="hive.hiveSupers"></beekeeper-superlist>
     </ui-card-content>

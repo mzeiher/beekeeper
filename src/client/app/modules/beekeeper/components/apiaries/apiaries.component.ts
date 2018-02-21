@@ -14,11 +14,11 @@ import { DialogService } from '../../../ui/components/dialog/service/dialog.serv
 
 @Component({
     selector: 'beekeeper-apiaries',
-    templateUrl: './collections.component.html',
-    styleUrls: ['./collections.component.scss'],
+    templateUrl: './apiaries.component.html',
+    styleUrls: ['./apiaries.component.scss'],
     providers: [ApiaryService, HiveService, UiService]
 })
-export class CollectionsComponent implements OnInit {
+export class ApiariesComponent implements OnInit {
 
     @Input() apiaries: Apiary[];
 

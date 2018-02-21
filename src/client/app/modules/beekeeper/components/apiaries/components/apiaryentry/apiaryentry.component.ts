@@ -6,12 +6,12 @@ import { Apiary } from "../../../../../../../../shared/model/apiary";
 
 
 @Component({
-    selector: 'beekeeper-collectionlistentry',
-    templateUrl: './collectionlistentry.component.html',
-    styleUrls: ['./collectionlistentry.component.scss'],
+    selector: 'beekeeper-apiaryentry',
+    templateUrl: './apiaryentry.component.html',
+    styleUrls: ['./apiaryentry.component.scss'],
     providers: [ApiaryService, UiService],
 })
-export class CollectionListEntryComponent {
+export class ApiaryEntryComponent {
 
     @Input() apiary: Apiary;
     @Output() onEdit: EventEmitter<Apiary> = new EventEmitter<Apiary>(true);
