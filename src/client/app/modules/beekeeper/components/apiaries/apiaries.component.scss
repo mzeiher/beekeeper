@@ -1,4 +1,4 @@
-#collectionlist {
+#apiarylist {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -7,7 +7,7 @@
     align-items: stretch;
 }
 
-#collectionlist > beekeeper-apiaryentry {
+#apiarylist > beekeeper-apiaryentry {
     flex: 1 1 auto;
     margin: 0.5rem;
 }

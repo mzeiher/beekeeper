@@ -3,12 +3,12 @@ import { Apiary } from "../../../../../../../../shared/model/apiary";
 import { ApiaryService } from "../../../../service/apiary.service";
 
 @Component({
-    selector: 'beekeeper-editcollection',
-    styleUrls: ['./editcollection.component.scss'],
-    templateUrl: './editcollection.component.html',
+    selector: 'beekeeper-editapiary',
+    styleUrls: ['./editapiary.component.scss'],
+    templateUrl: './editapiary.component.html',
     providers: []
 })
-export class EditCollectionComponent {
+export class EditApiaryComponent {
 
     @Input() apiary: Apiary;
     

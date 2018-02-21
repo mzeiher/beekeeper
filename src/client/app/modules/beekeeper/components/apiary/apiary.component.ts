@@ -9,17 +9,17 @@ import { Hive } from '../../../../../../shared/model/hive';
 import { Apiary } from '../../../../../../shared/model/apiary';
 
 @Component({
-    selector: 'beekeeper-collection',
-    templateUrl: './collection.component.html',
-    styleUrls: ['./collection.component.scss'],
+    selector: 'beekeeper-apiary',
+    templateUrl: './apiary.component.html',
+    styleUrls: ['./apiary.component.scss'],
     providers: [ApiaryService, HiveService]
 })
-export class CollectionComponent implements OnInit {
+export class ApiaryComponent implements OnInit {
 
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
         private hiveService: HiveService,
-        private collectionService: ApiaryService) { }
+        private apiaryService: ApiaryService) { }
 
     @Input() hiveList: Hive[] = [];
     @Input() currentApiary: Apiary;
@@ -27,9 +27,9 @@ export class CollectionComponent implements OnInit {
     ngOnInit() {
         const apiaryId = this.activatedRoute.snapshot.paramMap.get('apiaryId');
         if (typeof apiaryId === 'string') {
-            this.collectionService.getApiary(apiaryId).then(
-                (collection) => {
-                    this.currentApiary = collection;
+            this.apiaryService.getApiary(apiaryId).then(
+                (apiary) => {
+                    this.currentApiary = apiary;
                     this.reloadList();
                 }
             ).catch((error) => {
@@ -47,10 +47,10 @@ export class CollectionComponent implements OnInit {
             return this.hiveService.addHive(hive);
         }).then((hive) => {
             this.currentApiary.hives.push(hive.id);
-            return this.collectionService.updateApiary(this.currentApiary);
-        }).then((collection) => {
-            if (collection) {
-                this.currentApiary = collection;
+            return this.apiaryService.updateApiary(this.currentApiary);
+        }).then((apiary) => {
+            if (apiary) {
+                this.currentApiary = apiary;
             }
             this.reloadList();
         });

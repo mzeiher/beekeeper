@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HiveModule } from './modules/beekeeper/beekeeper.module';
-import { CollectionComponent } from './modules/beekeeper/components/collection/collection.component';
+import { ApiaryComponent } from './modules/beekeeper/components/apiary/apiary.component';
 import { HiveComponent } from './modules/beekeeper/components/hive/hive.component';
 import { ApiariesComponent } from './modules/beekeeper/components/apiaries/apiaries.component';
 
@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'apiary/:apiaryId',
-        component: CollectionComponent
+        component: ApiaryComponent
     },
     {
         path: 'apiary/:apiaryId/hive/:hiveId',

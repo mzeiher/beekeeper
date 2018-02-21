@@ -9,7 +9,7 @@ import { Hive } from '../../../../../../shared/model/hive';
 
 import { HiveService } from '../../service/hive.service';
 import { UiService } from '../../../utils/services/uiservice.service';
-import { EditCollectionComponent } from '../collection/components/editcollection/editcollection.component';
+import { EditApiaryComponent } from '../apiary/components/editapiary/editapiary.component';
 import { DialogService } from '../../../ui/components/dialog/service/dialog.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class ApiariesComponent implements OnInit {
     }
 
     editApiary(apiary:Apiary) {
-        const dialog = this.dialogService.createDialog(EditCollectionComponent, [{id: 'ok', label: 'OK'},{id: 'cancel', label: 'CANCEL'}]);
+        const dialog = this.dialogService.createDialog(EditApiaryComponent, [{id: 'ok', label: 'OK'},{id: 'cancel', label: 'CANCEL'}]);
         dialog.getComponent().apiary = JSON.parse(JSON.stringify(apiary));
         dialog.open();
         dialog.addClickListener((id, dlg) => {

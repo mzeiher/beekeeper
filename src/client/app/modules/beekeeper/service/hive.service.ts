@@ -14,8 +14,8 @@ export class HiveService {
         return Promise.resolve(hiveDataBase.hives);
     }
 
-    public getAllHivesForApiary(collection: Apiary): Promise<Hive[]> {
-        return Promise.all<Hive>(collection.hives.map((value) => {
+    public getAllHivesForApiary(apiary: Apiary): Promise<Hive[]> {
+        return Promise.all<Hive>(apiary.hives.map((value) => {
             return this.getHive(value);
         }));
     }

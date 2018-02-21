@@ -16,7 +16,7 @@ export class ApiaryEntryComponent {
     @Input() apiary: Apiary;
     @Output() onEdit: EventEmitter<Apiary> = new EventEmitter<Apiary>(true);
 
-    constructor(private collectionService: ApiaryService, private uiService:UiService) {
+    constructor(private apiaryService: ApiaryService, private uiService:UiService) {
     }
     
     editClick():void {
