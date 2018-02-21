@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Hive } from "../../../../../shared/model/hive";
-import { Collection } from '../../../../../shared/model/collection';
+import { Apiary } from '../../../../../shared/model/apiary';
 
 import { hiveDataBase } from "./hivedb.test";
 
@@ -14,23 +14,10 @@ export class HiveService {
         return Promise.resolve(hiveDataBase.hives);
     }
 
-    public getAllHivesForCollection(collection: Collection): Promise<Hive[]> {
+    public getAllHivesForApiary(collection: Apiary): Promise<Hive[]> {
         return Promise.all<Hive>(collection.hives.map((value) => {
             return this.getHive(value);
         }));
-    }
-
-    public getAllHivesNotInCollection(collection: Collection): Promise<Hive[]> {
-        return this.getAllHives().then((hiveList) => {
-            const hives: Hive[] = [];
-            hiveList.reduce((prevValue, currentValue) => {
-                if(collection.hives.indexOf(currentValue.id) < 0) {
-                    prevValue.push(currentValue);
-                }
-                return prevValue;
-            }, hives);
-            return Promise.resolve(hives);
-        })
     }
 
     public addHive(newHive: Hive): Promise<Hive> {

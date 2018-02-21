@@ -3,24 +3,24 @@ import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'leaflet';
 
 import { HiveService } from '../../service/hive.service';
-import { CollectionService } from '../../service/collection.service';
+import { ApiaryService } from '../../service/apiary.service';
 
 import { Hive } from '../../../../../../shared/model/hive';
-import { Collection } from '../../../../../../shared/model/collection';
+import { Apiary } from '../../../../../../shared/model/apiary';
 
 @Component({
     selector: 'beekeeper-hive',
     templateUrl: './hive.component.html',
     styleUrls: ['./hive.component.scss'],
-    providers: [HiveService, CollectionService]
+    providers: [HiveService, ApiaryService]
 })
 export class HiveComponent implements OnInit {
 
     @Input() hive: Hive;
-    @Input() currentCollection: Collection = null;
+    @Input() currentApiary: Apiary = null;
     @Input() currentHiveEdit:Hive;
 
-    constructor(private router: Router, private hiveService: HiveService, private collectionService: CollectionService, private activatedRoute: ActivatedRoute) { 
+    constructor(private router: Router, private hiveService: HiveService, private apiaryService: ApiaryService, private activatedRoute: ActivatedRoute) { 
         
     }
 
@@ -29,26 +29,10 @@ export class HiveComponent implements OnInit {
         
         this.hiveService.getHive(hiveId).then((hive) => {
             this.hive = hive;
-            const collectionId = this.activatedRoute.snapshot.paramMap.get('collectionId');
-            if (collectionId && collectionId !== 'all' && collectionId !== 'uncollected') {
-                this.collectionService.getAllCollections().then((collections) => {
-                    for (let collection of collections) {
-                        if (collection.id === collectionId) {
-                            this.currentCollection = collection;
-                            break;
-                        }
-                    }
-                    if (this.currentCollection === null) {
-                        this.currentCollection = this.collectionService.getAllCollection();
-                    }
-                });
-            } else {
-                if(collectionId === null || collectionId === 'all') {
-                    this.currentCollection = this.collectionService.getAllCollection();
-                } else if(collectionId === 'uncollected') {
-                    this.currentCollection = this.collectionService.getUncollectedCollection();
-                }
-            }
+            const apiaryId = this.activatedRoute.snapshot.paramMap.get('apiaryId');
+            this.apiaryService.getApiary(apiaryId).then((value) => {
+                this.currentApiary = value;
+            });
         }).catch(() => {
             this.hive = null;
         });
@@ -58,15 +42,5 @@ export class HiveComponent implements OnInit {
     editHive() {
         this.currentHiveEdit = JSON.parse(JSON.stringify(this.hive));
     }
-    cancelEdit() {
-        this.currentHiveEdit = null;
-    }
-
-    updateHive() {
-        debugger;
-        this.hiveService.updateHive(this.currentHiveEdit).then((hive) => {
-            this.currentHiveEdit = null;
-            this.hive = hive;
-        });
-    }
+    
 }

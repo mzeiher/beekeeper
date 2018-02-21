@@ -3,76 +3,54 @@ import { Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { HiveService } from '../../service/hive.service';
-import { CollectionService } from '../../service/collection.service';
+import { ApiaryService } from '../../service/apiary.service';
 
 import { Hive } from '../../../../../../shared/model/hive';
-import { Collection } from '../../../../../../shared/model/collection';
+import { Apiary } from '../../../../../../shared/model/apiary';
 
 @Component({
     selector: 'beekeeper-collection',
     templateUrl: './collection.component.html',
     styleUrls: ['./collection.component.scss'],
-    providers: [CollectionService, HiveService]
+    providers: [ApiaryService, HiveService]
 })
 export class CollectionComponent implements OnInit {
 
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
         private hiveService: HiveService,
-        private collectionService: CollectionService) { }
+        private collectionService: ApiaryService) { }
 
     @Input() hiveList: Hive[] = [];
-    @Input() currentCollection: Collection;
+    @Input() currentApiary: Apiary;
 
     ngOnInit() {
-        const collectionId = this.activatedRoute.snapshot.paramMap.get('collectionId');
-        if (collectionId === 'uncollected') {
-            this.currentCollection = this.collectionService.getUncollectedCollection();
-            this.collectionService.getAllCollections().then((collections) => {
-                const hiveIds = collections.reduce((prevValue, currentValue) => {
-                    return currentValue.hives.concat(prevValue);
-                }, []).filter((value, index, self) => {
-                    return self.indexOf(value) === index;
-                });
-                this.currentCollection.hives = hiveIds;
-                this.reloadList();
-            });
-        } else if (collectionId === 'all') {
-            this.currentCollection = this.collectionService.getAllCollection();
-            this.reloadList();
-        } else if (typeof collectionId === 'string') {
-            this.collectionService.getCollection(collectionId).then(
+        const apiaryId = this.activatedRoute.snapshot.paramMap.get('apiaryId');
+        if (typeof apiaryId === 'string') {
+            this.collectionService.getApiary(apiaryId).then(
                 (collection) => {
-                    this.currentCollection = collection;
+                    this.currentApiary = collection;
                     this.reloadList();
                 }
             ).catch((error) => {
-                this.currentCollection = null;
+                this.currentApiary = null;
                 this.reloadList();
             });
         } else {
-            this.currentCollection = null;
+            this.currentApiary = null;
         }
     }
 
     public addHive() {
         this.hiveService.getTemplate("").then((hive) => {
-            if(this.currentCollection && this.currentCollection.id !== 'all' && this.currentCollection.id !== 'uncollected') {
-                hive.collections.push(this.currentCollection.id);
-            }
+            hive.apiary = this.currentApiary.id;
             return this.hiveService.addHive(hive);
         }).then((hive) => {
-            if (this.currentCollection && (this.currentCollection.id === 'all' || this.currentCollection.id === 'uncollected')) {
-                return Promise.resolve(this.currentCollection);
-            } else if (this.currentCollection) {
-                this.currentCollection.hives.push(hive.id);
-                return this.collectionService.updateCollection(this.currentCollection);
-            } else {
-                return Promise.resolve(null);
-            }
+            this.currentApiary.hives.push(hive.id);
+            return this.collectionService.updateApiary(this.currentApiary);
         }).then((collection) => {
             if (collection) {
-                this.currentCollection = collection;
+                this.currentApiary = collection;
             }
             this.reloadList();
         });
@@ -80,20 +58,11 @@ export class CollectionComponent implements OnInit {
     }
 
     private reloadList() {
-        if (this.currentCollection !== null) {
-            if (this.currentCollection.id === 'all') {
-                this.hiveService.getAllHives().then((hiveList) => {
-                    this.hiveList = hiveList;
-                });
-            } else if (this.currentCollection.id === 'uncollected') {
-                this.hiveService.getAllHivesNotInCollection(this.currentCollection).then((hiveList) => {
-                    this.hiveList = hiveList;
-                });
-            } else {
-                this.hiveService.getAllHivesForCollection(this.currentCollection).then((hiveList) => {
-                    this.hiveList = hiveList;
-                });
-            }
+        if (this.currentApiary !== null) {
+            this.hiveService.getAllHivesForApiary(this.currentApiary).then((hiveList) => {
+                this.hiveList = hiveList;
+            });
+
         } else {
             this.hiveList = null;
         }

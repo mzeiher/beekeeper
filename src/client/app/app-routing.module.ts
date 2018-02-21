@@ -10,15 +10,15 @@ import { CollectionsComponent } from './modules/beekeeper/components/collections
 
 const appRoutes: Routes = [
     {
-        path: 'collections',
+        path: 'apiaries',
         component: CollectionsComponent
     },
     {
-        path: 'collection/:collectionId',
+        path: 'apiary/:apiaryId',
         component: CollectionComponent
     },
     {
-        path: 'collection/:collectionId/hive/:hiveId',
+        path: 'apiary/:apiaryId/hive/:hiveId',
         component: HiveComponent
     },
     {

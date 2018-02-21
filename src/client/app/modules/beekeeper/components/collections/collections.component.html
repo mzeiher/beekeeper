@@ -1,6 +1,6 @@
 <div id="collectionlist">
-    <beekeeper-collectionlistentry [collatedCollection]="collection" *ngFor="let collection of collections" (onEdit)="editCollection($event)">
+    <beekeeper-collectionlistentry [apiary]="apiary" *ngFor="let apiary of apiaries" (onEdit)="editApiary($event)">
 
     </beekeeper-collectionlistentry>
 </div>
-<button (click)="addCollection()">Add Collection</button>
+<button (click)="addApiary()">Apiary</button>

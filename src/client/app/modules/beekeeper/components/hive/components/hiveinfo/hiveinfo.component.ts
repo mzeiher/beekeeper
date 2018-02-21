@@ -1,6 +1,6 @@
 import { Component, Input, Output } from "@angular/core";
 import { Hive } from "../../../../../../../../shared/model/hive";
-import { Collection } from "../../../../../../../../shared/model/collection";
+import { Apiary } from "../../../../../../../../shared/model/apiary";
 
 @Component({
     selector: 'beekeeper-hiveinfo',
@@ -9,6 +9,6 @@ import { Collection } from "../../../../../../../../shared/model/collection";
 })
 export class HiveInfoComponent {
 
-    @Input() currentCollection: Collection
+    @Input() currentApiary: Apiary
 
 }

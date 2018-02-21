@@ -1,25 +1,17 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { Collection } from "../../../../../../../../shared/model/collection";
-import { CollectionService } from "../../../../service/collection.service";
+import { Apiary } from "../../../../../../../../shared/model/apiary";
+import { ApiaryService } from "../../../../service/apiary.service";
 
 @Component({
     selector: 'beekeeper-editcollection',
     styleUrls: ['./editcollection.component.scss'],
     templateUrl: './editcollection.component.html',
-    providers: [CollectionService]
+    providers: []
 })
 export class EditCollectionComponent {
 
-    @Input() collection: Collection;
-    @Output() onAction: EventEmitter<string> = new EventEmitter<string>(true);
+    @Input() apiary: Apiary;
+    
+    constructor() {}
 
-    constructor(private collectionService:CollectionService) {}
-
-    cancelEdit() {
-        this.onAction.emit('cancel');
-    }
-
-    updateCollection() {
-        this.onAction.emit('update');
-    }
 }

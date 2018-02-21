@@ -1,14 +1,14 @@
 <ui-card>
     <ui-card-content>
         <ui-card-header>
-            <a [routerLink]="['/collection', collatedCollection.id]">{{collatedCollection.name}}</a>
-            <i *ngIf="collatedCollection.targetCollection" class="fa fa-edit" (click)="editClick()"></i>
+            <a [routerLink]="['/apiary', apiary.id]">{{apiary.name}}</a>
+            <i *ngIf="apiary" class="fa fa-edit" (click)="editClick()"></i>
         </ui-card-header>
-        <ui-card-subheading *ngIf="collatedCollection && collatedCollection.position">
-            <i class="fa fa-map"></i> Lat: {{collatedCollection.position.lat}} Lon: {{collatedCollection.position.lon}}
+        <ui-card-subheading *ngIf="apiary && apiary.position">
+            <i class="fa fa-map"></i> Lat: {{apiary.position.lat}} Lon: {{apiary.position.lon}}
         </ui-card-subheading>
         <ui-card-subheading>
-            <i class="fa fa-archive"></i> {{collatedCollection.hives.length}} Hive(s) in this collection
+            <i class="fa fa-archive"></i> {{apiary.hives.length}} Hive(s) in this collection
         </ui-card-subheading>
     </ui-card-content>
 </ui-card>

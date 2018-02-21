@@ -15,7 +15,7 @@ import { HiveInfoComponent } from './components/hive/components/hiveinfo/hiveinf
 import { SuperListComponent } from './components/hive/components/superlist/superlist.component';
 import { EditCollectionComponent } from './components/collection/components/editcollection/editcollection.component';
 
-import { CollectionService } from './service/collection.service';
+import { ApiaryService } from './service/apiary.service';
 import { HiveService } from './service/hive.service';
 import { UiService } from '../utils/services/uiservice.service';
 import { HiveMapComponent } from './components/hivemap/hivemap.component';
@@ -39,7 +39,7 @@ import { HiveMapComponent } from './components/hivemap/hivemap.component';
       EditCollectionComponent,
       HiveMapComponent
     ],
-  providers: [HiveService, CollectionService, UiService],
+  providers: [HiveService, ApiaryService, UiService],
   entryComponents: [EditCollectionComponent]
 })
 export class HiveModule { }

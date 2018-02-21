@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Hive } from "../../../../../../../../shared/model/hive";
-import { Collection } from "../../../../../../../../shared/model/collection";
+import { Apiary } from "../../../../../../../../shared/model/apiary";
 
 @Component({
     selector: 'beekeeper-hivelist',
@@ -10,5 +10,5 @@ import { Collection } from "../../../../../../../../shared/model/collection";
 export class HiveListComponent {
 
     @Input() hiveList:Hive[];
-    @Input() currentCollection: Collection;
+    @Input() currentApiary: Apiary;
 }

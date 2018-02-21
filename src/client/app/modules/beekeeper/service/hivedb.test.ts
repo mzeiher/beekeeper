@@ -1,4 +1,4 @@
-import { Collection } from "../../../../../shared/model/collection";
+import { Apiary } from "../../../../../shared/model/apiary";
 import { Hive } from "../../../../../shared/model/hive";
 
 interface DataBase {
@@ -17,7 +17,7 @@ export const hiveDataBase: DataBase = {
             description: "",
             type: "DADANT_US",
 
-            collections: [],
+            apiary: null,
             
             created: 0,
             lastChanged: 0,

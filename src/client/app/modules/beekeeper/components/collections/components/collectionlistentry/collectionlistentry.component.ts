@@ -1,28 +1,26 @@
 import { Component, Input, ViewChild, ElementRef, EventEmitter, Output} from "@angular/core";
 
-import { CollatedCollection } from "../../model/collatedmodel.model";
-
-import { CollectionService } from "../../../../service/collection.service";
+import { ApiaryService } from "../../../../service/apiary.service";
 import { UiService } from "../../../../../utils/services/uiservice.service";
-import { Collection } from "../../../../../../../../shared/model/collection";
+import { Apiary } from "../../../../../../../../shared/model/apiary";
 
 
 @Component({
     selector: 'beekeeper-collectionlistentry',
     templateUrl: './collectionlistentry.component.html',
     styleUrls: ['./collectionlistentry.component.scss'],
-    providers: [CollectionService, UiService],
+    providers: [ApiaryService, UiService],
 })
 export class CollectionListEntryComponent {
 
-    @Input() collatedCollection: CollatedCollection;
-    @Output() onEdit: EventEmitter<Collection> = new EventEmitter<Collection>(true);
+    @Input() apiary: Apiary;
+    @Output() onEdit: EventEmitter<Apiary> = new EventEmitter<Apiary>(true);
 
-    constructor(private collectionService: CollectionService, private uiService:UiService) {
+    constructor(private collectionService: ApiaryService, private uiService:UiService) {
     }
     
     editClick():void {
-        this.onEdit.emit(this.collatedCollection.targetCollection);
+        this.onEdit.emit(this.apiary);
     }
 
 }
