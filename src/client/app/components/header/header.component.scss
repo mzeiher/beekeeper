@@ -1,3 +1,7 @@
+:host {
+    display: block;
+}
+
 header {
     position: fixed;
     top: 0px;
@@ -6,11 +10,11 @@ header {
 
     height: 3rem;
 
-    background: #000;
-    background: var(--theme-primary-dark, #000);
+    background: rgba(251,233,4, 1);
+    background: var(--theme-header-background, rgba(251,233,4, 1));
 
-    color: #fff;
-    color: var(--theme-primary-text-on-dark, #fff);
+    color: #000;
+    color: var(--theme-header-text-on-light, #000);
 }
 
 nav {
@@ -26,8 +30,8 @@ nav {
 
 nav a, nav a:visited, nav a:link {
     
-    color: #fff;
-    color: var(--theme-primary-text-on-dark, #fff);
+    color: #000;
+    color: var(--theme-header-text-on-light, #000);
 
     text-decoration: none;
 

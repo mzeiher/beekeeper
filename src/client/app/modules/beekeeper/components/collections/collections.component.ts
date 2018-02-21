@@ -13,7 +13,7 @@ import { EditCollectionComponent } from '../collection/components/editcollection
 import { DialogService } from '../../../ui/components/dialog/service/dialog.service';
 
 @Component({
-    selector: 'beekeeper-collections',
+    selector: 'beekeeper-apiaries',
     templateUrl: './collections.component.html',
     styleUrls: ['./collections.component.scss'],
     providers: [ApiaryService, HiveService, UiService]
