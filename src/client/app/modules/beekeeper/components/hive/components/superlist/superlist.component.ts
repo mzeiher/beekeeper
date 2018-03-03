@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { HiveSuper } from "../../../../../../../../shared/model/hive";
+import { HiveSuper, HiveSuperEntryMap } from "../../../../../../../../shared/model/hive";
 
 @Component({
     selector: 'beekeeper-superlist',
@@ -8,5 +8,5 @@ import { HiveSuper } from "../../../../../../../../shared/model/hive";
 })
 export class SuperListComponent {
 
-    @Input() hiveSupers:HiveSuper[]
+    @Input() hiveSupers:HiveSuper<keyof HiveSuperEntryMap>[]
 }

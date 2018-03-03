@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Hive } from "../../../../../shared/model/hive";
+import { Hive, HiveSuper } from "../../../../../shared/model/hive";
 import { Apiary } from '../../../../../shared/model/apiary';
 
 import { hiveDataBase } from "./hivedb.test";
@@ -27,11 +27,13 @@ export class HiveService {
             if (!hiveSuper.id) {
                 hiveSuper.id = Math.random().toString();
             }
-            hiveSuper.frames.forEach((frame) => {
-                if (!frame.id) {
-                    frame.id = Math.random().toString();
-                }
-            });
+            if (hiveSuper.type === 'brood-super') {
+                (<HiveSuper<'brood-super'>>hiveSuper).options.frames.forEach((frame) => {
+                    if (!frame.id) {
+                        frame.id = Math.random().toString();
+                    }
+                });
+            }
         });
         hiveDataBase.hives.push(hive);
         window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
@@ -49,12 +51,12 @@ export class HiveService {
         if (hive) {
             return Promise.resolve(hive);
         }
-        return Promise.reject('not implemented');
+        return Promise.reject('not found');
     }
 
     public updateHive(hive: Hive): Promise<Hive> {
-        for(let i = 0; i < hiveDataBase.hives.length ; i++) {
-            if(hive.id === hiveDataBase.hives[i].id) {
+        for (let i = 0; i < hiveDataBase.hives.length; i++) {
+            if (hive.id === hiveDataBase.hives[i].id) {
                 hiveDataBase.hives[i] = hive;
                 window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));
                 return Promise.resolve(hive);
@@ -72,12 +74,18 @@ export class HiveService {
         const clone = <Hive>JSON.parse(JSON.stringify(hive));
         clone.history = [];
         clone.id = '';
+        clone.created = new Date().getTime();
+        clone.lastChanged = new Date().getTime();
         clone.hiveSupers.forEach((hiveSuper) => {
             hiveSuper.id = '';
-            hiveSuper.frames.forEach((frame) => {
-                frame.id = ''
-                frame.history = [];
-            });
+            hiveSuper.created = new Date().getTime();
+            hiveSuper.lastChanged = new Date().getTime();
+            if (hiveSuper.type === 'brood-super' || hiveSuper.type === 'honey-super') {
+                (<HiveSuper<'brood-super'>>hiveSuper).options.frames.forEach((frame) => {
+                    frame.id = null
+                    frame.history = [];
+                });
+            }
         });
         hiveDataBase.templates.push(hive);
         window.localStorage.setItem('hiveDataBase', JSON.stringify(hiveDataBase));

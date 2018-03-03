@@ -18,7 +18,7 @@ export const hiveDataBase: DataBase = {
             type: "DADANT_US",
 
             apiary: null,
-            
+
             created: 0,
             lastChanged: 0,
 
@@ -43,28 +43,58 @@ export const hiveDataBase: DataBase = {
             },
 
             dimensions: {
-                width: 550,
-                depth: 550
+                width: 509,
+                depth: 509
             },
 
             hiveSupers: [{
-                type: "COVER",
-                frames: [],
                 id: null,
-                maxFrameCount: 0,
-                subtype: ''
+                type: "roof",
+                dimensions: {
+                    depth: 600,
+                    height: 10,
+                    width: 600
+                },
+                options : null,
+                created: 0,
+                lastChanged: 0
             },{
-                type: "BROOD_SUPER",
-                frames: [],
                 id: null,
-                maxFrameCount: 12,
-                subtype: ""
-            },{
-                type: "LOW_BOTTOM_BOARD",
-                frames: [],
+                type: "cover",
+                dimensions: {
+                    depth: 550,
+                    height: 100,
+                    width: 550
+                },
+                options : null,
+                created: 0,
+                lastChanged: 0
+            }, {
                 id: null,
-                maxFrameCount: 0,
-                subtype: ""
+                type: "brood-super",
+                dimensions: {
+                    depth: 509,
+                    height: 305,
+                    width: 509
+                },
+                options: {
+                    maxFrameCount: 12,
+                    frames: [],
+                    type: null
+                },
+                created: 0,
+                lastChanged: 0
+            }, {
+                id: null,
+                type: "bottom-board",
+                dimensions: {
+                    depth: 495,
+                    height: 50,
+                    width: 495
+                },
+                options: null,
+                created: 0,
+                lastChanged: 0
             }],
             history: []
         }
@@ -73,6 +103,6 @@ export const hiveDataBase: DataBase = {
 
 try {
     Object.assign(hiveDataBase, JSON.parse(window.localStorage.getItem('hiveDataBase')));
-} catch(e) {}
+} catch (e) { }
 
 window['hiveDataBase'] = hiveDataBase;

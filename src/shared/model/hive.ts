@@ -1,7 +1,7 @@
 import { Frame } from "./frame";
 import { Activity, ActivityMap } from "./activity";
 
-export type HiveType = "DADANT" | "DADANT_US" | "LANGSTROTH" | "ZANDER" 
+export type HiveType = "DADANT" | "DADANT_US" | "LANGSTROTH" | "ZANDER"
 /**
  * Hive representation (Aggregate)
  */
@@ -49,20 +49,56 @@ export interface Hive {
     /**
      * current frames
      */
-    hiveSupers: HiveSuper[]; // zargen
+    hiveSupers: HiveSuper<keyof HiveSuperEntryMap>[]; // zargen
     history: HiveHistoryEntry<keyof HiveHistoryEntryMap>[];
 }
 
-export type HiveSuperType = "ROOF" | "BROOD_SUPER" | "HONEY_SUPER" | "FEEDER" | "COVER" | "QUEEN_EXCLUDER" | "HIGH_BOTTOM_BOARD" | "LOW_BOTTOM_BOARD" | "BIENENFLUCHT"
+export interface HiveSuperEntryMap {
+    "roof": {};
+    "insulation": {};
+    "brood-super": {
+        type: string;
+        maxFrameCount: number;
+        frames: Frame[],
+        content: {
+            brood: number,
+            drones: number,
+            pollen: number,
+            honey: number;
+        }
+    };
+    "honey-super": {
+        type: string;
+        maxFrameCount: number;
+        frames: Frame[]
+    };
+    "feeder": {
+        capacity: number;
+        currentLoad: number;
+    };
+    "cover": {};
+    "queen-excluder": {};
+    "bottom-board": {
+        type: string;
+    };
+    "beeflight": {};
+}
 
-export interface HiveSuper {
+export interface HiveSuper<K extends keyof HiveSuperEntryMap> {
     id: string;
 
-    type: HiveSuperType;
-    subtype: string;
+    created: number;
+    lastChanged: number;
 
-    maxFrameCount: number;
-    frames: Frame[];
+    type: K;
+
+    dimensions?: {
+        height: number;
+        width: number;
+        depth: number;
+    }
+
+    options: HiveSuperEntryMap[K];
 }
 
 export interface HiveHistoryEntryMap {
