@@ -71,7 +71,7 @@ export const hiveDataBase: DataBase = {
                 lastChanged: 0
             }, {
                 id: null,
-                type: "brood-super",
+                type: "super",
                 dimensions: {
                     depth: 509,
                     height: 305,

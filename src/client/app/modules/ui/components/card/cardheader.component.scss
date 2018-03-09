@@ -12,6 +12,11 @@
     text-transform: inherit;
     margin: 0;
 
+    padding: 0.5rem 1rem 0.5rem 1rem;
+
     color: rgba(0, 0, 0, 0.87);
     color: var(--theme-primary-text-on-light, rgba(0, 0, 0, 0.87));
+
+    background: rgb(244, 206, 66);
+    background: var(--theme-card-header-background,rgb(244, 206, 66));
 }

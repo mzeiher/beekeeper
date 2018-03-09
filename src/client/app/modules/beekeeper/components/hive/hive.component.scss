@@ -1,24 +1,56 @@
-ui-card {
-    margin: 0.5rem;
+:host {
+    display: block;
 }
 
-ui-card-content.rating {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: flex-start;
-    align-items: flex-start;
+a, a:link, a:visited, a:hover {
+    color: #fff;
+    color: var(--theme-primary-text-on-dark, #fff);
+
+    text-decoration: none;
 }
 
-ui-card-content.rating div {
-    flex: 0 1 auto;
+#hiveinfo > #overview {
+    padding: 1em 0 0 1em;
+
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
-ui-card-header > i {
+#hiveinfo {    
+    background-color: rgba(0,0,0,0.5);
+    background-color: var(--theme-secondary-dark, rgba(0,0,0,0.5));
+
+    color: #fff;
+    color: var(--theme-primary-text-on-dark, #fff);
+}
+
+
+#hiveinfo h1 {
+    margin: 0;
+    padding: 0.25rem 0 1rem 1rem;
+
+    font-size: 1.5rem;
+    line-height: 2rem;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+}
+
+#hiveinfo h1 > i {
     line-height: 2rem;
     font-size: 0.8rem;
     vertical-align: top;
 
     cursor: pointer;
+}
+
+#hiveinfo h2 {
+    margin: -0.75rem 0 0 0;
+    padding: 0 0 1rem 1rem;
+
+    font-size: 1rem;
+    line-height: 1.1rem;
+
+    font-weight: 300;
 }

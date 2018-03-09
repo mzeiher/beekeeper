@@ -1,14 +1,13 @@
 <ui-card>
-    <ui-card-content>
-        <ui-card-header>
-            <a [routerLink]="['/apiary', apiary.id]">{{apiary.name}}</a>
-            <i *ngIf="apiary" class="fa fa-edit" (click)="editClick()"></i>
-        </ui-card-header>
-        <ui-card-subheading *ngIf="apiary && apiary.position">
-            <i class="fa fa-map"></i> Lat: {{apiary.position.lat}} Lon: {{apiary.position.lon}}
-        </ui-card-subheading>
-        <ui-card-subheading>
-            <i class="fa fa-archive"></i> {{apiary.hives.length}} Hive(s) in this apiary
-        </ui-card-subheading>
-    </ui-card-content>
+    <ui-card-header>
+        <a [routerLink]="['/apiary', apiary.id]">{{apiary.name}}</a>
+        <i *ngIf="apiary" class="fa fa-edit" (click)="editClick()"></i>
+    </ui-card-header>
+    <ui-card-subheading *ngIf="apiary && apiary.position">
+        <i class="fa fa-map"></i> Lat: {{apiary.position.lat}} Lon: {{apiary.position.lon}}
+    </ui-card-subheading>
+    <ui-card-subheading>
+        <i class="fa fa-archive"></i> {{apiary.hives.length}} Hive(s) in this apiary
+    </ui-card-subheading>
+    
 </ui-card>

@@ -27,8 +27,8 @@ export class HiveService {
             if (!hiveSuper.id) {
                 hiveSuper.id = Math.random().toString();
             }
-            if (hiveSuper.type === 'brood-super') {
-                (<HiveSuper<'brood-super'>>hiveSuper).options.frames.forEach((frame) => {
+            if (hiveSuper.type === 'super') {
+                (<HiveSuper<'super'>>hiveSuper).options.frames.forEach((frame) => {
                     if (!frame.id) {
                         frame.id = Math.random().toString();
                     }
@@ -80,8 +80,8 @@ export class HiveService {
             hiveSuper.id = '';
             hiveSuper.created = new Date().getTime();
             hiveSuper.lastChanged = new Date().getTime();
-            if (hiveSuper.type === 'brood-super' || hiveSuper.type === 'honey-super') {
-                (<HiveSuper<'brood-super'>>hiveSuper).options.frames.forEach((frame) => {
+            if (hiveSuper.type === 'super') {
+                (<HiveSuper<'super'>>hiveSuper).options.frames.forEach((frame) => {
                     frame.id = null
                     frame.history = [];
                 });

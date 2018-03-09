@@ -1,8 +1,6 @@
 <beekeeper-apiaryinfo [apiary]="currentApiary">
 </beekeeper-apiaryinfo>
-<ui-card>
-    <ui-card-content>
-        <beekeeper-hivelist [hiveList]="hiveList" [currentApiary]="currentApiary"></beekeeper-hivelist>
-    </ui-card-content>
-</ui-card>
+
+<beekeeper-hivelist [hiveList]="hiveList" [currentApiary]="currentApiary" (refresh)="reloadList()"></beekeeper-hivelist>
+
 <button (click)="addHive()">Add Hive</button>

@@ -2,17 +2,20 @@ import { Component, OnInit, Input, ViewContainerRef, ViewChild, ComponentFactory
 import { HiveSuper, HiveSuperEntryMap, Hive } from "../../../../../../../../shared/model/hive";
 import { SuperBaseComponent } from "./superbase.component";
 import { RoofComponent } from "./roof/roof.component";
+import { HiveSuperComponent } from "./super/super.component";
 
 const referenceMap = {
-    'roof' : RoofComponent
+    'roof' : RoofComponent,
+    'super' : HiveSuperComponent
 }
 
 @Component({
     selector: 'beekeeper-super',
     template: `
-    <div>{{hiveSuper?.type}}</div>
+    <ui-card>
+    <ui-card-header>{{hiveSuper?.type}}</ui-card-header>
     <div #placeholder></div>
-    
+    </ui-card>
     `,
     styleUrls: ['super.component.scss'],
     providers: []

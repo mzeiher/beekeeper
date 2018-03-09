@@ -1,4 +1,4 @@
-import { Frame } from "./frame";
+import { Frame, FrameContent } from "./frame";
 import { Activity, ActivityMap } from "./activity";
 
 export type HiveType = "DADANT" | "DADANT_US" | "LANGSTROTH" | "ZANDER"
@@ -56,21 +56,11 @@ export interface Hive {
 export interface HiveSuperEntryMap {
     "roof": {};
     "insulation": {};
-    "brood-super": {
+    "super": {
         type: string;
         maxFrameCount: number;
         frames: Frame[],
-        content: {
-            brood: number,
-            drones: number,
-            pollen: number,
-            honey: number;
-        }
-    };
-    "honey-super": {
-        type: string;
-        maxFrameCount: number;
-        frames: Frame[]
+        content: FrameContent
     };
     "feeder": {
         capacity: number;

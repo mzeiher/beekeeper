@@ -5,6 +5,10 @@
         <input type="text" value="{{hive.name}}" (input)="hive.name = $event.target.value" />
     </div>
     <div>
+        Type:
+        <input type="text" value="{{hive.type}}" (input)="hive.type = $event.target.value" />
+    </div>
+    <div>
         Description:
         <textarea (input)="hive.description = $event.target.value">{{hive.description}}</textarea>
     </div>
